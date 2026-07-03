@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Auspex — Your investment memory</title>
+<meta name="description" content="You forget why you bought. Auspex remembers — it turns your own reasons into watchable lines, confronts them with the facts, and asks. Never advice, never a rating." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070B; --bg2:#080B11; --card:#0B1018; --card2:#0E141E; --bd:#1A2433; --bd2:#243245;
+  --text:#F5F7FA; --sub:#8B9BB3; --faint:#5C6B82;
+  --accent:#3B82F6; --pos:#10B981; --neg:#EF4444;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.55;
+  background-image:radial-gradient(900px 460px at 80% -5%, rgba(59,130,246,.08), transparent 60%);}
+.mono{font-family:var(--mono)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.sec{padding:96px 0;border-top:1px solid var(--bd)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+h1,h2,h3{letter-spacing:-.02em;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border-radius:9px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid transparent;transition:.16s}
+.btn-p{background:var(--accent);color:#fff;box-shadow:0 10px 26px -12px rgba(59,130,246,.8)} .btn-p:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-s{background:transparent;border-color:var(--bd2);color:var(--text)} .btn-s:hover{border-color:var(--accent);color:var(--accent)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(12px);background:rgba(5,7,11,.7);border-bottom:1px solid var(--bd)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mk{width:28px;height:28px;border-radius:7px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:800}
+.brand .nm{font-family:var(--mono);font-weight:700;font-size:13.5px;letter-spacing:.16em}
+.nav-r{display:flex;align-items:center;gap:18px}
+.nav-r a.lnk{color:var(--sub);font-size:14px} .nav-r a.lnk:hover{color:var(--text)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:84px 0 96px}
+.hero h1{font-size:clamp(34px,4.6vw,56px);line-height:1.05;font-weight:800}
+.hero .lead{color:var(--sub);font-size:18px;margin:22px 0 32px;max-width:520px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero .trust{margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--faint)}
+.hero .trust b{color:var(--sub)}
+
+/* mockup */
+.mock{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+.mock-top{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--bd)}
+.mock-top .d{width:11px;height:11px;border-radius:50%} .d.r{background:#EF4444}.d.y{background:#F5B54A}.d.g{background:#10B981}
+.mock-top .ttl{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--faint)}
+.mock-sum{padding:16px 18px 6px;font-family:var(--mono);font-size:12.5px;color:var(--sub);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mock-sum b{color:var(--text)} .mock-sum .a{color:var(--neg)} .mock-sum .w{color:var(--accent)} .mock-sum .c{color:var(--pos)}
+.mock-body{padding:6px 14px 18px}
+.mrow{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--bd);border-radius:9px;margin-top:10px;background:var(--bg2)}
+.mrow .tk{font-family:var(--mono);font-weight:700;font-size:14px}
+.mrow .ch{font-size:12.5px;color:#CBD4E2}
+.mrow .ch .hi{color:var(--neg);font-weight:600} .mrow .ch .me{color:var(--accent);font-weight:600}
+.mtag{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:6px;border:1px solid}
+.mtag.act{color:var(--neg);border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.08)}
+.mtag.watch{color:var(--accent);border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.08)}
+.mtag.clear{color:var(--pos);border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.07)}
+
+/* problem compare */
+.h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;max-width:760px}
+.sub-lead{color:var(--sub);font-size:17px;margin-top:16px;max-width:680px}
+.cmp3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.cmp-card{border:1px solid var(--bd);border-radius:12px;padding:26px;background:var(--card)}
+.cmp-card.you{border-color:rgba(59,130,246,.4);background:linear-gradient(180deg,rgba(59,130,246,.06),transparent)}
+.cmp-card .nm{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+.cmp-card .t{font-size:18px;font-weight:600;margin-top:12px}
+.cmp-card.you .t{color:#BFD3FF}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.step{border:1px solid var(--bd);border-radius:12px;padding:26px;background:var(--card)}
+.step .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700}
+.step .t{font-size:18px;font-weight:600;margin-top:14px}
+.step .d{color:var(--sub);font-size:14px;margin-top:8px}
+.signals{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.sig{font-family:var(--mono);font-size:12.5px;color:#CBD4E2;border:1px solid var(--bd);background:var(--card);border-radius:8px;padding:9px 14px}
+.sig .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+
+/* product demo */
+.demo{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px}
+.dcard{border:1px solid var(--bd);border-radius:12px;padding:26px;background:var(--card);transition:.16s}
+.dcard:hover{border-color:var(--bd2);transform:translateY(-2px)}
+.dcard .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+.dcard .t{font-size:19px;font-weight:600;margin-top:12px}
+.dcard .d{color:var(--sub);font-size:14.5px;margin-top:10px}
+.dcard.wide{grid-column:1 / -1}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.pill{font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:6px;border:1px solid var(--bd);color:var(--sub)}
+.pill.neg{color:var(--neg);border-color:rgba(239,68,68,.35)} .pill.acc{color:var(--accent);border-color:rgba(59,130,246,.35)} .pill.pos{color:var(--pos);border-color:rgba(16,185,129,.35)}
+
+/* who */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.who-col{border:1px solid var(--bd);border-radius:12px;padding:28px;background:var(--card)}
+.who-col h3{font-size:16px;font-family:var(--mono);letter-spacing:.06em}
+.who-col.best h3{color:var(--pos)} .who-col.not h3{color:var(--neg)}
+.who-col ul{list-style:none;margin:18px 0 0;padding:0}
+.who-col li{font-size:15px;color:#CBD4E2;padding:9px 0 9px 26px;position:relative;border-bottom:1px solid rgba(26,36,51,.6)}
+.who-col li:last-child{border-bottom:0}
+.who-col li::before{position:absolute;left:0;top:9px;font-family:var(--mono);font-weight:700}
+.who-col.best li::before{content:"+";color:var(--pos)} .who-col.not li::before{content:"\2715";color:var(--neg)}
+
+/* pricing */
+.price-wrap{display:flex;justify-content:center;margin-top:44px}
+.price{width:100%;max-width:440px;border:1px solid var(--bd2);border-radius:16px;padding:34px;background:linear-gradient(180deg,rgba(59,130,246,.06),transparent);text-align:center}
+.price .badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);border:1px solid rgba(59,130,246,.4);border-radius:30px;padding:5px 14px;text-transform:uppercase}
+.price .amt{font-size:52px;font-weight:800;margin:20px 0 2px} .price .amt span{font-size:18px;color:var(--sub);font-weight:500}
+.price ul{list-style:none;margin:24px 0;padding:0;text-align:left}
+.price li{font-size:14.5px;color:#CBD4E2;padding:9px 0 9px 26px;position:relative}
+.price li::before{content:"\2713";position:absolute;left:0;top:9px;color:var(--pos);font-family:var(--mono);font-weight:700}
+.price .btn{width:100%}
+.cap{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+/* email capture */
+.capture{display:flex;gap:10px;max-width:460px;margin:22px auto 0}
+.capture input{flex:1;height:46px;background:var(--card);border:1px solid var(--bd);border-radius:9px;color:var(--text);font-size:14.5px;padding:0 14px;outline:none}
+.capture input:focus{border-color:var(--accent)}
+
+/* final */
+.final{text-align:center}
+.final h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;max-width:720px;margin:0 auto}
+.final p{color:var(--sub);font-size:17px;margin:18px auto 30px;max-width:560px}
+
+footer{border-top:1px solid var(--bd);padding:40px 0;color:var(--faint);font-size:12.5px;text-align:center;font-family:var(--mono)}
+.disc{max-width:680px;margin:0 auto 10px;line-height:1.6}
+
+.plist{list-style:none;margin:18px 0 0;padding:0;max-width:600px}
+.plist li{position:relative;padding:8px 0 8px 22px;font-size:15.5px;color:#CBD4E2;border-bottom:1px solid rgba(26,36,51,.6)}
+.plist li:last-child{border-bottom:0}
+.plist li::before{content:"\203A";position:absolute;left:0;top:7px;color:var(--accent);font-family:var(--mono);font-weight:700}
+.limited{font-family:var(--mono);font-size:12px;color:var(--accent);margin:6px 0 14px;letter-spacing:.04em}
+.lead2{color:#CBD4E2;font-size:15.5px;margin:0 0 28px;max-width:520px;line-height:1.6}
+.value-line{font-size:14px;color:#CBD4E2;margin-top:10px;line-height:1.5}
+.pstatus{font-family:var(--mono);font-size:11.5px;color:var(--sub);margin-bottom:14px}
+.faq{max-width:760px;margin:40px auto 0}
+.faq .q{border-top:1px solid var(--bd);padding:22px 4px}
+.faq .q:last-child{border-bottom:1px solid var(--bd)}
+.faq .qq{font-size:16px;font-weight:600;color:var(--text)}
+.faq .qa{color:var(--sub);font-size:14.5px;margin-top:8px;line-height:1.65}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:48px 0 64px}
+  .cmp3,.steps,.demo,.who{grid-template-columns:1fr}
+  .sec{padding:64px 0}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav">
+  <div class="brand"><div class="mk">A</div><div class="nm">AUSPEX</div></div>
+  <div class="nav-r"><a class="lnk" href="#how">How it works</a><a class="lnk" href="#pricing">Pricing</a><a class="lnk" href="/app">Live demo</a><a class="btn btn-p" style="height:40px" href="/app">Open the app</a></div>
+</div></nav>
+
+<header class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">External memory for investors</div>
+      <h1>You forget why you hold it. The market won't.</h1>
+      <p class="lead">Auspex turns the reason you bought into watchable lines, replays the last 12 months against them, and asks you the day one breaks.</p>
+      <p class="lead2">No opinions, no ratings, no tips. It gives you back your own words, dated, against the facts — and ends with a question.</p>
+      <div class="cta">
+        <a class="btn btn-p" href="/app">Try the live demo</a>
+        <a class="btn btn-s" href="#pricing">Join founding members</a>
+      </div>
+      <div class="trust">Most days, your reasons still hold. <b>Auspex speaks up the day they don't.</b></div>
+      <div class="trust" style="color:var(--accent);margin-top:10px;letter-spacing:.04em">Reads the signals. You decide.</div>
+    </div>
+    <div class="mock">
+      <div class="mock-top"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="ttl">your memory — NVDA</span></div>
+      <div class="mock-sum" style="display:block;line-height:1.5"><span style="color:var(--text)">"Still cheap relative to its growth."</span><br><span class="faint">— your reason, captured 2025-03-02</span></div>
+      <div class="mock-body">
+        <div class="mrow"><span class="tk">RULE</span><span class="ch">P/E rises above its 70th percentile</span><span class="mtag watch">WATCHED</span></div>
+        <div class="mrow"><span class="tk">NOTE</span><span class="ch sub">The moat keeps widening</span><span class="mtag clear">YOURS</span></div>
+        <div class="mrow"><span class="tk">FLAG</span><span class="ch"><span class="hi">Crossed on 2025-11-14</span> · valuation entered the top of its range</span><span class="mtag act">SAVE</span></div>
+        <div style="padding:12px;color:#fff;font-weight:600;font-size:13px">Is "cheap" still your reason today?</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec"><div class="wrap">
+  <div class="eyebrow">The problem</div>
+  <h2 class="h2">You don't forget the ticker. You forget the reason.</h2>
+  <p class="sub-lead">Months after you buy, the original thesis blurs. You hold on autopilot. And the day your reason quietly breaks, nothing reminds you it was your reason.</p>
+  <ul class="plist"><li>The reason you bought lives in your head, not on paper.</li><li>Six months later, you barely remember it.</li><li>A thesis can break without you noticing.</li><li>You end up holding for reasons that no longer exist.</li><li>No tool remembers why — they only show prices.</li></ul>
+  <p class="sub-lead" style="margin-top:18px">Auspex is the one place your reasons live —<br><span style="color:var(--text)">dated, and checked against reality.</span></p>
+  <div class="cmp3">
+    <div class="cmp-card"><div class="nm">Yahoo Finance</div><div class="t">shows you prices.</div></div>
+    <div class="cmp-card"><div class="nm">A screener</div><div class="t">shows you scores.</div></div>
+    <div class="cmp-card you"><div class="nm">Auspex</div><div class="t">remembers your reasons.</div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="how"><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2 class="h2">Three steps. Then it remembers for you.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">Write why you hold it</div><div class="d">In your own words. One position, one reason. Nothing leaves your browser.</div></div>
+    <div class="step"><div class="n">02</div><div class="t">Auspex turns it into watchable lines</div><div class="d">Your reason becomes measurable conditions — each labelled auto or manual, honestly.</div></div>
+    <div class="step"><div class="n">03</div><div class="t">It replays, then watches</div><div class="d">12 months replayed against your lines, then watched forward. The day one breaks, you get a question — never an instruction.</div></div>
+  </div>
+  <div class="signals">
+    <span class="sig"><span class="dot"></span>Price levels</span>
+    <span class="sig"><span class="dot"></span>Valuation vs its own range</span>
+    <span class="sig"><span class="dot"></span>Analyst targets</span>
+    <span class="sig"><span class="dot"></span>Earnings dates</span>
+    <span class="sig"><span class="dot"></span>Your manual checks, kept yours</span>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="eyebrow">Inside the product</div>
+  <h2 class="h2">It gives you back your own words — never its opinion.</h2>
+  <div class="demo">
+    <div class="dcard wide"><div class="k">Your reason, as watchable lines</div><div class="t">From your words to measurable conditions</div><div class="d">Auspex turns "still cheap, growing, wide moat" into lines it can actually check — and is honest when a line is qualitative and stays yours.</div>
+      <div class="pill-row"><span class="pill pos">AUTO · BACK-TESTABLE</span><span class="pill acc">AUTO · WATCHED</span><span class="pill">MANUAL · YOURS</span></div></div>
+    <div class="dcard"><div class="k">The 12-month replay</div><div class="t">The save moment</div><div class="d">It replays your lines against the last year. If one was already crossed, you see the date. If none were, your thesis held — and you see how close it came.</div></div>
+    <div class="dcard"><div class="k">Honest by design</div><div class="t">Auto, watched-forward, or manual</div><div class="d">Every line is labelled. Auspex never claims to watch what it cannot measure — qualitative reasons stay your call.</div></div>
+    <div class="dcard"><div class="k">Ends with a question</div><div class="t">Never an instruction</div><div class="d">No buy, no sell, no rating. Your reason, dated, against the facts — and a question only you can answer.</div></div>
+    <div class="dcard"><div class="k">A daily watch</div><div class="t">Speaks up only when a line breaks</div><div class="d">Most days, silence. The day a line you set is crossed, a question — so a broken thesis never goes unnoticed.</div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="eyebrow">Who it's for</div>
+  <h2 class="h2">For investors who already have a thesis — and want to be held to it.</h2>
+  <div class="who">
+    <div class="who-col best"><h3>BEST FOR</h3><ul>
+      <li>Disciplined long-term investors</li><li>Investors who hold for written reasons</li><li>Quality &amp; growth investors</li><li>People who want to be reminded when a reason breaks</li><li>Investors who prefer research over speculation</li></ul></div>
+    <div class="who-col not"><h3>NOT FOR</h3><ul>
+      <li>Day traders</li><li>Tip seekers</li><li>People with no thesis</li><li>Anyone wanting buy or sell calls</li></ul></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap" style="text-align:center">
+  <div class="eyebrow" style="text-align:center">The real cost</div>
+  <h2 class="h2" style="margin:0 auto">The real cost isn't a bad buy.</h2>
+  <p class="sub-lead" style="margin:18px auto 0">It's holding a position for a year on a reason that quietly stopped being true. No alarm. No reminder. Just a slow drift you only notice once it's expensive.<br><br>You wrote a reason. The market tested it months ago.<br><span style="color:var(--text)">Auspex makes sure you were asked.</span></p>
+</div></section>
+
+<section class="sec" id="pricing"><div class="wrap">
+  <div class="eyebrow" style="text-align:center">Pricing</div>
+  <h2 class="h2" style="text-align:center;margin:0 auto">One plan. Built for the people who will shape the product.</h2>
+  <div class="price-wrap"><div class="price">
+    <div class="badge">FOUNDING MEMBERS · FIRST 100</div>
+    <div class="amt">€19<span> / month</span></div>
+    <div class="sub" style="color:var(--sub);font-size:13.5px">Future public price: €49/month</div>
+    <div class="value-line">Less than one trade — to never hold a position on a reason that no longer exists.</div>
+    <ul>
+      <li>Your theses, saved and dated</li><li>Your reasons turned into watchable lines</li><li>12-month replay against your lines</li><li>A daily watch that speaks up only when a line breaks</li><li>Honest auto / manual labels</li><li>A question the day a thesis breaks — never an instruction</li><li>Founder pricing locked forever</li>
+    </ul>
+    <div class="limited">Limited to the first 100 members</div>
+    <div class="pstatus">Founding members shape the roadmap and keep €19 for life.</div>
+    <a class="btn btn-p join" href="#">Join Founding Members</a>
+    <div class="cap">No card required to join the waiting list.</div>
+  </div></div>
+  <div class="capture"><input id="email" type="email" placeholder="you@email.com" autocomplete="email"><button class="btn btn-p join">Join</button></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="eyebrow" style="text-align:center">Questions investors ask</div>
+  <h2 class="h2" style="text-align:center;margin:0 auto">Straight answers before you trust it with your watchlist.</h2>
+  <div class="faq">
+    <div class="q"><div class="qq">Is this investment advice?</div><div class="qa">No. Auspex never tells you to buy or sell and never rates anything. It returns your own written reason, dated, against the facts, and ends with a question only you can answer.</div></div>
+    <div class="q"><div class="qq">How is it different from a dashboard or a screener?</div><div class="qa">A dashboard has opinions and shows state. Auspex has no opinion — it remembers yours, turns them into watchable lines, and checks them.</div></div>
+    <div class="q"><div class="qq">Do you score or rate stocks?</div><div class="qa">No score, no rating, no verdict is shown. The only judgement that matters here is yours.</div></div>
+    <div class="q"><div class="qq">What can it actually watch?</div><div class="qa">Honest answer: price and valuation lines have daily history, so they can be replayed and watched. Some fundamentals (growth, margins) update slowly and are watched going forward. Qualitative reasons (moat, management) stay yours — labelled manual, never faked as monitored.</div></div>
+    <div class="q"><div class="qq">Can I cancel anytime?</div><div class="qa">Yes. As a founding member, your €19 price stays locked for as long as you keep your account.</div></div>
+  </div>
+</div></section>
+
+<section class="sec final"><div class="wrap">
+  <h2>The market will test your reasons. Auspex makes sure you remember them.</h2>
+  <p>Write one reason. See the day it was already tested.</p>
+  <a class="btn btn-p join" href="#" style="height:50px;padding:0 28px;font-size:15px">Get early access</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="disc">Auspex is research and education tooling, not personalised investment advice. Scores are a triage signal, not a recommendation. Market data may be delayed or sampled.</div>
+  <div>© 2026 Auspex · Reads the signals. You decide. · <a class="lnk" href="/app" style="color:var(--sub)">Open the app</a></div>
+</div></footer>
+
+<script>
+/* Founder: set your address here. The Join buttons open the visitor's mail client. */
+var FOUNDER_EMAIL = "team.auspex@gmail.com";
+function join(){
+  var em = (document.getElementById("email")||{}).value || "";
+  try{ if(em) localStorage.setItem("aa_lead", em); }catch(e){}
+  var body = encodeURIComponent("I'd like to join Auspex as a founding member."+(em?("\n\nMy email: "+em):""));
+  window.location.href = "mailto:"+FOUNDER_EMAIL+"?subject="+encodeURIComponent("Founding member — Auspex")+"&body="+body;
+}
+document.querySelectorAll(".join").forEach(function(b){ b.addEventListener("click",function(e){ e.preventDefault(); join(); }); });
+</script>
+</body>
+</html>

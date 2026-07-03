@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Auspex — Memory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05070B;--card:#0B1018;--card2:#0E141E;--bd:#1A2433;--bd2:#243245;--text:#F5F7FA;--sub:#8B9BB3;--faint:#5C6B82;--accent:#3B82F6;--pos:#10B981;--neg:#EF4444;
+--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;min-height:100vh;line-height:1.6;
+background-image:radial-gradient(800px 420px at 80% -10%,rgba(59,130,246,.07),transparent 60%)}
+.mono{font-family:var(--mono)}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header{display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:1px solid var(--bd)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .mk{width:26px;height:26px;border-radius:6px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:700}
+.brand .nm{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em}
+.brand .sl{font-size:11px;color:var(--faint);font-family:var(--mono)}
+.dots{display:flex;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--bd2)}.dot.on{background:var(--accent)}
+main{padding:38px 0 80px}
+.screen{display:none}.screen.on{display:block;animation:fade .4s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:27px;letter-spacing:-.02em;margin:0 0 12px;font-weight:700}
+h2{font-size:22px;letter-spacing:-.02em;margin:0 0 10px;font-weight:700}
+.lead{color:var(--sub);font-size:16px;margin-bottom:26px}
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:18px 0 8px}
+input,textarea{width:100%;background:var(--card);border:1px solid var(--bd);border-radius:9px;color:var(--text);font-family:var(--font);font-size:15px;padding:12px 14px;outline:none;resize:vertical}
+input.tk{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+input:focus,textarea:focus{border-color:var(--accent)}
+.hint{font-size:12.5px;color:var(--faint);margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border:0;border-radius:9px;background:var(--accent);color:#fff;font-weight:600;font-size:14.5px;cursor:pointer;transition:.15s;margin-top:26px}
+.btn:hover{filter:brightness(1.1)}.btn[disabled]{opacity:.5;cursor:default}
+.btn-s{background:transparent;border:1px solid var(--bd2);color:var(--text)}.btn-s:hover{border-color:var(--accent);color:var(--accent)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.loader{display:flex;align-items:center;gap:14px;color:var(--sub);font-family:var(--mono);font-size:14px;padding:30px 0}
+.spin{width:18px;height:18px;border:2px solid var(--bd);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:18px;margin-bottom:12px}
+.quote{border-left:2px solid var(--accent);padding:10px 0 10px 16px;color:#DCE3EE;font-size:15px;margin:14px 0;background:linear-gradient(90deg,rgba(59,130,246,.05),transparent 70%)}
+.quote .d{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:6px}
+.eng{font-family:var(--mono);font-size:11px;color:var(--sub);margin-bottom:16px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bd);border-radius:20px;padding:5px 12px}
+.eng .d{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.eng.fallback .d{background:#F5B54A}
+.assn{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid var(--bd)}
+.assn:last-child{border-bottom:0}
+.assn .body{flex:1;min-width:0}
+.assn .t{font-size:15px;color:var(--text)}
+.assn .b{font-size:12.5px;color:var(--faint);margin-top:4px}
+.assn .edit{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.assn .edit .op{font-family:var(--mono);font-size:12px;color:var(--sub)}
+.assn .edit input{width:120px;height:36px;padding:0 10px;font-family:var(--mono);font-size:13px}
+.tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;padding:4px 8px;border-radius:5px;border:1px solid;flex-shrink:0;white-space:nowrap}
+.tag.rewind{color:var(--pos);border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.07)}
+.tag.fwd{color:var(--accent);border-color:rgba(59,130,246,.35);background:rgba(59,130,246,.07)}
+.tag.manual{color:#F5B54A;border-color:rgba(245,181,74,.35);background:rgba(245,181,74,.07)}
+.tagnote{font-size:11.5px;color:var(--faint);margin-top:14px;line-height:1.55}
+.outcome .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+.outcome.err .kicker{color:var(--neg)}.outcome.vig .kicker{color:var(--pos)}.outcome.fwd .kicker{color:var(--accent)}
+.fact{font-size:16px;color:#DCE3EE;line-height:1.7;margin:14px 0}
+.fact b{color:#fff}
+.cross{font-family:var(--mono);font-size:13px;color:var(--neg);border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.06);border-radius:8px;padding:12px 14px;margin:14px 0}
+.near{font-family:var(--mono);font-size:13px;color:var(--sub);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin:10px 0}
+.near b{color:var(--text)}
+.watchlist{margin:16px 0}
+.wl-item{display:flex;gap:10px;align-items:center;font-size:13.5px;color:#CBD4E2;padding:7px 0;border-bottom:1px solid rgba(26,36,51,.6)}
+.wl-item:last-child{border-bottom:0}
+.wl-item .tg{font-family:var(--mono);font-size:9px;font-weight:700;padding:3px 7px;border-radius:5px;border:1px solid;flex-shrink:0}
+.question{font-size:17px;color:#fff;font-weight:600;margin:22px 0 6px;line-height:1.5}
+.offer{border:1px solid var(--bd2);border-radius:14px;padding:26px;background:linear-gradient(180deg,rgba(59,130,246,.06),transparent);text-align:center;margin-top:8px}
+.offer .badge{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);border:1px solid rgba(59,130,246,.4);border-radius:20px;padding:5px 13px;text-transform:uppercase}
+.offer .amt{font-size:40px;font-weight:800;margin:16px 0 2px}.offer .amt span{font-size:16px;color:var(--sub);font-weight:500}
+.offer .sub{color:var(--sub);font-size:13px}
+.offer .lim{font-family:var(--mono);font-size:11.5px;color:var(--accent);margin:12px 0}
+.cap{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:12px}
+.note{font-family:var(--mono);font-size:11px;color:#F5B54A;margin-top:10px}
+.errbox{border:1px solid rgba(239,68,68,.3);color:#F4A1A4;border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;display:none;margin-top:16px}
+footer{border-top:1px solid var(--bd);padding:26px 0;color:var(--faint);font-size:11.5px;font-family:var(--mono);text-align:center}
+.src{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:18px}
+</style>
+</head>
+<body>
+<header><div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+  <div class="brand"><div class="mk">A</div><div><div class="nm">AUSPEX</div><div class="sl">Reads the signals. You decide.</div></div></div>
+  <div class="dots"><span class="dot" id="d1"></span><span class="dot" id="d2"></span><span class="dot" id="d3"></span></div>
+</div></header>
+
+<main class="wrap">
+
+  <!-- S1 -->
+  <section class="screen on" id="s1">
+    <h1>Why do you hold it?</h1>
+    <p class="lead">Pick one position you hold right now and write, in your own words, the reason you hold it. Auspex turns your reason into lines it can watch — and replays the last 12 months against them.</p>
+    <label>Ticker you hold</label>
+    <input id="ticker" class="tk" placeholder="NVDA" autocomplete="off" spellcheck="false" maxlength="12">
+    <label>Your reason for holding (your words)</label>
+    <textarea id="reason" rows="3" placeholder="e.g. Still cheap relative to its growth, margins are strong, and the moat keeps widening."></textarea>
+    <label>Your exit condition (optional)</label>
+    <input id="exitc" placeholder="e.g. I would sell if it gets expensive" autocomplete="off">
+    <div class="hint">Nothing is sent anywhere. Your words stay in this browser.</div>
+    <button class="btn" id="go1">Turn my reason into watchable lines</button>
+    <div class="errbox" id="err1"></div>
+  </section>
+
+  <!-- S2 loading -->
+  <section class="screen" id="s2">
+    <div class="loader"><span class="spin"></span><span id="loadmsg">Reading your reason…</span></div>
+  </section>
+
+  <!-- S3 assertions -->
+  <section class="screen" id="s3">
+    <h2>Your reason, as watchable lines</h2>
+    <p class="lead">Here is your reason broken into conditions. Edit any threshold so it matches what you actually believe, then validate. The badges are honest about what can be watched.</p>
+    <div class="eng" id="engBadge"><span class="d"></span><span id="engText">…</span></div>
+    <div class="quote" id="reasonQuote"></div>
+    <div class="card"><div id="assnList"></div>
+      <div class="tagnote" id="tagNote"></div>
+    </div>
+    <button class="btn" id="go3">Validate and replay 12 months</button>
+  </section>
+
+  <!-- S4 rewind outcome -->
+  <section class="screen" id="s4">
+    <div class="outcome" id="outcome"></div>
+    <div class="src" id="src4"></div>
+    <button class="btn" id="go4">See what this would cost me</button>
+  </section>
+
+  <!-- S5 prepay -->
+  <section class="screen" id="s5">
+    <h2 id="payHead">Keep the watch on.</h2>
+    <p class="lead" id="paySub">Your lines are saved in this browser. To have them checked for you every market day — and to be asked the day one is crossed — lock the founder price.</p>
+    <div class="offer">
+      <div class="badge">FOUNDING MEMBERS · FIRST 100</div>
+      <div class="amt">€19<span> / month</span></div>
+      <div class="sub">Billed as 6 months prepaid · future public price €49</div>
+      <div class="lim">You keep €19 for life</div>
+      <button class="btn" id="payBtn" style="width:100%;margin-top:6px">Prepay 6 months — lock founder price</button>
+      <div class="cap">No judgement, no tips. Auspex returns your own words, dated, against the facts.</div>
+      <div class="note" id="payNote" style="display:none">Founder prepay link is not configured yet (placeholder).</div>
+    </div>
+    <div class="row" style="justify-content:center;margin-top:18px"><button class="btn-s btn" id="skipPay" style="margin-top:0">Not now — start another position</button></div>
+  </section>
+
+  <div class="errbox" id="err" style="display:none"></div>
+</main>
+
+<footer><div class="wrap">Auspex is an external memory. It returns your own words, dated, against the facts — never advice, never a rating, never a verdict. Market data may be delayed or sampled.</div></footer>
+
+<script>
+/* Founder: replace with your real 6-month prepaid Stripe Payment Link before the first test. */
+var PREPAY_URL = "REPLACE_WITH_STRIPE_PREPAY_LINK_6M";
+
+var $ = function(s){ return document.querySelector(s); };
+var STATE = { ticker:"", reason:"", exit:"", data:null, assertions:[], rewind:null };
+
+function show(id, step){
+  document.querySelectorAll(".screen").forEach(function(e){ e.classList.remove("on"); });
+  $("#"+id).classList.add("on");
+  ["d1","d2","d3"].forEach(function(d,i){ $("#"+d).classList.toggle("on", i < (step||0)); });
+  window.scrollTo(0,0);
+}
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function fmtNum(v){ return (v==null||isNaN(v))?"n/a":(Math.round(v*100)/100); }
+
+/* ---- S1 -> decompose ---- */
+function start(){
+  var t=($("#ticker").value||"").trim().toUpperCase();
+  var reason=($("#reason").value||"").trim();
+  var exitc=($("#exitc").value||"").trim();
+  $("#err1").style.display="none";
+  if(!t||!/^[A-Z0-9.\-]+$/.test(t)){ $("#err1").textContent="Enter a valid ticker."; $("#err1").style.display="block"; return; }
+  if(!reason){ $("#err1").textContent="Write the reason you hold it."; $("#err1").style.display="block"; return; }
+  STATE.ticker=t; STATE.reason=reason; STATE.exit=exitc;
+  show("s2",1); $("#loadmsg").textContent="Reading your reason and replaying "+t+"…";
+  fetch("/api/decompose",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({ticker:t,reason:reason,exit_condition:exitc})})
+   .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+   .then(function(o){ if(!o.ok){ throw new Error((o.d&&o.d.detail)||"Could not read that ticker."); }
+      STATE.data=o.d; STATE.assertions=o.d.assertions.map(function(a){ return Object.assign({},a); });
+      renderAssertions(); show("s3",1);
+   })
+   .catch(function(e){ show("s1",1); $("#err1").textContent=e.message; $("#err1").style.display="block"; });
+}
+
+/* ---- S3 assertion editor ---- */
+function tagFor(a){
+  if(a.monitor==="manual") return '<span class="tag manual">MANUAL · YOU CHECK</span>';
+  if(a.rewindable) return '<span class="tag rewind">AUTO · BACK-TESTABLE</span>';
+  return '<span class="tag fwd">AUTO · WATCHED FORWARD</span>';
+}
+function renderAssertions(){
+  var d=STATE.data;
+  if(d.engine==="anthropic"){
+    $("#engBadge").className = "eng";
+    $("#engText").textContent = "Decomposed by Claude" + (d.model?(" · "+d.model):"");
+  } else {
+    $("#engBadge").className = "eng fallback";
+    var why = d.engine_note ? (d.engine_note==="no_key" ? "no Claude key" : ("Claude unavailable — "+d.engine_note)) : "heuristic";
+    $("#engText").textContent = "Heuristic fallback active (" + why + ")";
+  }
+  $("#reasonQuote").innerHTML = '"'+esc(STATE.reason)+'"<div class="d">'+esc(d.name||d.ticker)+' · captured '+(d.generated_at||"").slice(0,10)+'</div>';
+  var rows = STATE.assertions.map(function(a,i){
+    var editable = (a.monitor!=="manual" && a.threshold!=null);
+    var unit = a.unit==="percentile"?"th pctl":(a.unit==="pct"?"%":(a.unit==="x"?"x":(a.unit==="price"?(d.currency||""):"")));
+    var ed = editable
+      ? '<div class="edit"><span class="op">'+(a.operator==="above"?"rises above":"falls below")+'</span>'
+        +'<input type="number" step="any" data-i="'+i+'" value="'+a.threshold+'"><span class="op">'+unit+'</span></div>'
+      : (a.monitor==="manual" ? '<div class="b">No market metric maps to this — it stays your responsibility.</div>' : '');
+    return '<div class="assn"><div class="body"><div class="t">'+esc(a.text)+'</div>'
+      +(a.basis?'<div class="b">'+esc(a.basis)+'</div>':'')+ed+'</div>'+tagFor(a)+'</div>';
+  }).join("");
+  $("#assnList").innerHTML = rows;
+  $("#tagNote").innerHTML = "Back-testable lines have a daily history Auspex can replay. Watched-forward lines update slowly (quarterly) and are checked going forward. Manual lines have no market data — Auspex never claims to watch them.";
+  $("#assnList").querySelectorAll("input[data-i]").forEach(function(inp){
+    inp.addEventListener("change", function(){ var i=+inp.getAttribute("data-i"); var v=parseFloat(inp.value);
+      if(!isNaN(v)){ STATE.assertions[i].threshold=v; } });
+  });
+}
+
+/* ---- rewind math (client-side) ---- */
+function percentile(sortedAsc, p){ var n=sortedAsc.length; if(!n) return null;
+  var idx=Math.max(0,Math.min(n-1,Math.round((p/100)*(n-1)))); return sortedAsc[idx]; }
+function seriesFor(a, closes, eps){
+  if(a.metric==="price") return {series:closes, thr:a.threshold, op:a.operator, ok:true};
+  if(a.metric==="pe"){ if(eps==null) return {ok:false}; return {series:closes.map(function(c){return c/eps;}), thr:a.threshold, op:a.operator, ok:true}; }
+  if(a.metric==="pe_percentile"){ if(eps==null) return {ok:false};
+    var pe=closes.map(function(c){return c/eps;}); var sorted=pe.slice().sort(function(x,y){return x-y;});
+    var thrv=percentile(sorted, a.threshold); return {series:pe, thr:thrv, op:a.operator, ok:true, pctl:a.threshold}; }
+  return {ok:false};
+}
+function firstCross(series, op, thr){ for(var i=0;i<series.length;i++){ if(op==="above"?series[i]>thr:series[i]<thr) return i; } return -1; }
+function closest(series, op, thr, dates){
+  var gaps=[]; for(var i=0;i<series.length;i++){ var g = op==="above" ? (thr-series[i]) : (series[i]-thr); if(g>=0) gaps.push({i:i,gap:g,val:series[i],date:dates[i]}); }
+  gaps.sort(function(a,b){return a.gap-b.gap;});
+  var out=[]; for(var k=0;k<gaps.length && out.length<2;k++){ var ok=true; for(var j=0;j<out.length;j++){ if(Math.abs(out[j].i-gaps[k].i)<18) ok=false; } if(ok) out.push(gaps[k]); }
+  return out;
+}
+function computeRewind(){
+  var d=STATE.data, H=d.history||{}, closes=H.closes||[], dates=H.dates||[], eps=d.eps;
+  var rewindables = STATE.assertions.filter(function(a){ return a.rewindable; });
+  var crossings=[];
+  rewindables.forEach(function(a){ var s=seriesFor(a,closes,eps); if(!s.ok) return;
+    var idx=firstCross(s.series,s.op,s.thr); if(idx>=0) crossings.push({a:a,idx:idx,date:dates[idx],val:s.series[idx],s:s}); });
+  var autoList = STATE.assertions.filter(function(a){return a.monitor==="auto";});
+  var manualList = STATE.assertions.filter(function(a){return a.monitor==="manual";});
+  if(crossings.length){ crossings.sort(function(x,y){return x.idx-y.idx;}); var c=crossings[0];
+    return {type:"error", a:c.a, date:c.date, val:c.val, autoList:autoList, manualList:manualList}; }
+  // no crossing: vigilance on first rewindable that can compute; else forward-only
+  var prim=null, ps=null;
+  for(var i=0;i<rewindables.length;i++){ var s=seriesFor(rewindables[i],closes,eps); if(s.ok){ prim=rewindables[i]; ps=s; break; } }
+  if(!prim || !closes.length){ return {type:"forward", autoList:autoList, manualList:manualList}; }
+  var near=closest(ps.series, ps.op, ps.thr, dates);
+  return {type:"vigilance", a:prim, near:near, autoList:autoList, manualList:manualList};
+}
+function metricValueLabel(a, val){
+  if(a.metric==="price") return (STATE.data.currency||"")+" "+fmtNum(val);
+  if(a.metric==="pe") return fmtNum(val)+"x P/E";
+  if(a.metric==="pe_percentile") return "P/E entering the top of its 1-year range";
+  return fmtNum(val);
+}
+function wlRow(a){ var tg = a.monitor==="manual"?'<span class="tg manual" style="color:#F5B54A;border-color:rgba(245,181,74,.35)">MANUAL</span>'
+   :(a.rewindable?'<span class="tg" style="color:var(--pos);border-color:rgba(16,185,129,.35)">AUTO</span>':'<span class="tg" style="color:var(--accent);border-color:rgba(59,130,246,.35)">AUTO</span>');
+  return '<div class="wl-item">'+tg+'<span>'+esc(a.text)+'</span></div>'; }
+
+function renderOutcome(){
+  var R=STATE.rewind, d=STATE.data, box=$("#outcome");
+  var watched = R.autoList.map(wlRow).join("") || '<div class="wl-item sub">None of your lines map to market data.</div>';
+  var manual = R.manualList.length ? ('<label>These remain yours to check</label><div class="watchlist">'+R.manualList.map(wlRow).join("")+'</div>') : '';
+  var shortReason = STATE.reason.length>90 ? STATE.reason.slice(0,90)+"…" : STATE.reason;
+  if(R.type==="error"){
+    box.className="outcome err";
+    box.innerHTML='<div class="kicker">A line you set has already been touched</div>'
+      +'<h2>One of your own rules would have spoken up.</h2>'
+      +'<div class="quote">"'+esc(STATE.reason)+'"<div class="d">your reason · '+(d.generated_at||"").slice(0,10)+'</div></div>'
+      +'<div class="cross">Your rule — '+esc(R.a.text)+' — was crossed on <b>'+R.date+'</b> ('+metricValueLabel(R.a,R.val)+').</div>'
+      +'<div class="fact">In the last 12 months, the line you just set was already reached. You were not asked that day.</div>'
+      +'<label>Going forward, these lines would be watched for you</label><div class="watchlist">'+watched+'</div>'+manual
+      +'<div class="question">On the day that line is crossed again, would you want to be asked whether "'+esc(shortReason)+'" still holds?</div>';
+  } else if(R.type==="vigilance"){
+    box.className="outcome vig";
+    var near=R.near||[];
+    var nearHtml = near.length
+      ? near.map(function(n){ return '<div class="near">Closest approach: <b>'+n.date+'</b> — '+metricValueLabel(R.a,n.val)+', within '+fmtNum(n.gap)+' of your line.</div>'; }).join("")
+      : '<div class="near">Your line was never approached closely over the last 12 months.</div>';
+    box.innerHTML='<div class="kicker">Your thesis held for 12 months</div>'
+      +'<h2>Your rule never triggered.</h2>'
+      +'<div class="quote">"'+esc(STATE.reason)+'"<div class="d">your reason · '+(d.generated_at||"").slice(0,10)+'</div></div>'
+      +'<div class="fact">Over the last 12 months, your rule — <b>'+esc(R.a.text)+'</b> — was never crossed.</div>'+nearHtml
+      +'<label>Going forward, these lines would be watched for you</label><div class="watchlist">'+watched+'</div>'+manual
+      +'<div class="question">Would you want to know the day one of these lines is finally crossed?</div>';
+  } else {
+    box.className="outcome fwd";
+    box.innerHTML='<div class="kicker">Your reason rests on conditions with no daily history</div>'
+      +'<h2>Nothing to replay — but plenty to watch.</h2>'
+      +'<div class="quote">"'+esc(STATE.reason)+'"<div class="d">your reason · '+(d.generated_at||"").slice(0,10)+'</div></div>'
+      +'<div class="fact">The lines you validated are fundamental or qualitative, so there is no daily series to replay. They can still be watched going forward.</div>'
+      +'<label>Going forward, these lines would be watched for you</label><div class="watchlist">'+watched+'</div>'+manual
+      +'<div class="question">Would you want a daily check that only speaks up when one of the measurable lines is crossed?</div>';
+  }
+  $("#src4").textContent = "Data: "+(d.data_source||"")+" · history: "+((d.history&&d.history.source)||"n/a")+" · valuation lines hold EPS constant over the window (approximation).";
+}
+
+/* ---- persistence ---- */
+function savePosition(){
+  try{ var arr=JSON.parse(localStorage.getItem("auspex_positions")||"[]");
+    arr.push({ticker:STATE.ticker, reason:STATE.reason, exit:STATE.exit, assertions:STATE.assertions, createdAt:new Date().toISOString()});
+    localStorage.setItem("auspex_positions", JSON.stringify(arr)); }catch(e){}
+}
+
+/* ---- wiring ---- */
+document.addEventListener("DOMContentLoaded", function(){
+  $("#go1").addEventListener("click", start);
+  $("#go3").addEventListener("click", function(){ STATE.rewind=computeRewind(); renderOutcome(); savePosition(); show("s4",2); });
+  $("#go4").addEventListener("click", function(){ show("s5",3); });
+  $("#payBtn").addEventListener("click", function(){
+    if(PREPAY_URL.indexOf("REPLACE_")===0){ $("#payNote").style.display="block"; return; }
+    window.location.href = PREPAY_URL;
+  });
+  $("#skipPay").addEventListener("click", function(){
+    STATE={ticker:"",reason:"",exit:"",data:null,assertions:[],rewind:null};
+    $("#ticker").value="";$("#reason").value="";$("#exitc").value=""; show("s1",1);
+  });
+  show("s1",1);
+});
+</script>
+</body>
+</html>
