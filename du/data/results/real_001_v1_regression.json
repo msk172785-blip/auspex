@@ -1,0 +1,4114 @@
+{
+  "engine": "v1.0",
+  "contract_key": "real_001",
+  "documents": [
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf"
+  ],
+  "reference_date": "2026-10-03",
+  "user_inputs": {},
+  "SIMULATED_EXAMPLE": false,
+  "interpreters": [
+    "FRAMES"
+  ],
+  "llm_log": [],
+  "warnings": [
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf : Entrée = extraction texte fournie par l'utilisateur (PDF original non accessible)."
+  ],
+  "document_anomalies": [
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf : Numéro d'article 4.3 utilisé 2 fois : p.7 « Révision des prix » ; p.10 « Avance »",
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf : Ordre non monotone : 4.3 (p.7) puis 4.2.3 (p.8)",
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf : Renvoi vers un article inexistant dans le document : « article 4.2.1. » (p.8)"
+  ],
+  "contract": {
+    "start_date": {
+      "value": null,
+      "earliest": "2026-12-16",
+      "missing": [
+        "notification_date"
+      ],
+      "steps": [
+        "max(2026-12-16, notification_date) : notification_date inconnue(s) -> date non déterminée ; au plus tôt 16/12/2026"
+      ],
+      "kind": "DOCUMENT",
+      "expression": "max(2026-12-16, notification_date)"
+    },
+    "start_evidence": [
+      {
+        "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+        "page": 5,
+        "page_end": 5,
+        "article": "3.1",
+        "quote": "Le présent accord-cadre est conclu pour une période initiale d'un (1) an à compter du 16 décembre 2026 ou à compter de sa notification au titulaire si celle-ci a lieu à une date ultérieure.",
+        "found_text": "Le présent accord-cadre est conclu pour une période initiale d'un (1) an à compter du 16\ndécembre 2026 ou à compter de sa notification au titulaire si celle-ci a lieu à une date ultérieure.",
+        "match": "EXACT",
+        "start": 9101,
+        "end": 9290
+      }
+    ],
+    "duration": {
+      "initial_months": 12,
+      "stated_last_date": "2030-09-15",
+      "renewals": [
+        {
+          "times": 2,
+          "period_months": 12,
+          "text": "deux fois pour une même période"
+        },
+        {
+          "times": 1,
+          "period_months": 9,
+          "text": "une troisième fois pour une période de neuf mois"
+        }
+      ],
+      "max_months": 45,
+      "stated_max_months": 48,
+      "computed_last_date_from_earliest_start": "2030-09-15"
+    },
+    "duration_evidence": [
+      {
+        "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+        "page": 5,
+        "page_end": 5,
+        "article": "3.1",
+        "quote": "Le présent accord-cadre est conclu pour une période initiale d'un (1) an à compter du 16 décembre 2026 ou à compter de sa notification au titulaire si celle-ci a lieu à une date ultérieure.",
+        "found_text": "Le présent accord-cadre est conclu pour une période initiale d'un (1) an à compter du 16\ndécembre 2026 ou à compter de sa notification au titulaire si celle-ci a lieu à une date ultérieure.",
+        "match": "EXACT",
+        "start": 9101,
+        "end": 9290
+      },
+      {
+        "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+        "page": 5,
+        "page_end": 5,
+        "article": "3.1",
+        "quote": "Il pourra être reconduit expressément deux fois pour une même période (soit du 16 décembre 2027 au 15 décembre 2028 et du 16 décembre 2028 au 15 décembre 2029), et une troisième fois pour une période de neuf mois (soit du 16 décembre 2029 au 15 septembre 2030).",
+        "found_text": "Il pourra être reconduit expressément deux fois pour une même période (soit du 16 décembre\n2027 au 15 décembre 2028 et du 16 décembre 2028 au 15 décembre 2029), et une troisième fois\npour une période de neuf mois (soit du 16 décembre 2029 au 15 septembre 2030).",
+        "match": "EXACT",
+        "start": 9292,
+        "end": 9553
+      },
+      {
+        "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+        "page": 5,
+        "page_end": 5,
+        "article": "3.1",
+        "quote": "La durée de reconduction du nouveau marché sera librement définie par le pouvoir adjudicateur sans que la durée totale de l'accord-cadre puisse excéder 4 ans.",
+        "found_text": "La durée de reconduction\ndu nouveau marché sera librement définie par le pouvoir adjudicateur sans que la durée totale de\nl'accord-cadre puisse excéder 4 ans.",
+        "match": "EXACT",
+        "start": 10014,
+        "end": 10172
+      }
+    ],
+    "duration_status": "AUTO_EXTRACTED",
+    "duration_review": [],
+    "annual_contract_value": null,
+    "payment_terms": [
+      {
+        "amount": 30,
+        "unit": "days",
+        "qualifier": null,
+        "direction": "after",
+        "anchor": "RECEIPT",
+        "anchor_text": "la date de réception de la demande ou de la date d'admission des prestations",
+        "text": "30 jours à compter de la date de réception de la demande ou de la date d'admission des prestations"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_type": "PURCHASE_ORDER_BILLING",
+      "actor": "SUPPLIER",
+      "actor_basis": "INFERRED_FROM_SECTION",
+      "action_required": "Facturer chaque bon de commande exécuté (prix du BPU appliqués aux quantités réellement exécutées).",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [
+        {
+          "value": 12000.0,
+          "unit": "EUR HT",
+          "role": "PURCHASE_ORDER_ANNUAL_CEILING",
+          "raw": "12 000 € HT"
+        }
+      ],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "page_end": 2,
+          "article": "1.1",
+          "quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "found_text": "Elles comprennent des prestations récurrentes et des prestations\nponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "match": "EXACT",
+          "start": 1265,
+          "end": 1409
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 6,
+          "page_end": 6,
+          "article": "4.1",
+          "quote": "Accord-cadre mono-attributaire à bons de commande, en application des articles R.2162-2, R.2162-4, R.2162-13 et R.2162-14 et ce, sans mention de minimum, et pour un montant annuel maximum de commandes arrêté à 12 000 € HT.",
+          "found_text": "Accord-cadre mono-attributaire à bons de commande, en application des articles\nR.2162-2, R.2162-4, R.2162-13 et R.2162-14 et ce, sans mention de minimum, et pour\nun montant annuel maximum de commandes arrêté à 12 000 € HT.",
+          "match": "EXACT",
+          "start": 13104,
+          "end": 13326
+        }
+      ],
+      "section_id": "S2",
+      "source_page": 2,
+      "source_article": "1.1",
+      "source_quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+      "interpreter": "FRAMES",
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [
+        "liste des bons de commande et factures (rapprochement)"
+      ],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E1",
+      "legacy_type": "PURCHASE_ORDER_BILLING",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "VARIABLE_SERVICE_BILLING",
+      "actor": "UNKNOWN",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "page_end": 2,
+          "article": "1.1",
+          "quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "found_text": "Elles comprennent des prestations récurrentes et des prestations\nponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "match": "EXACT",
+          "start": 1265,
+          "end": 1409
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 3,
+          "page_end": 3,
+          "article": "1.5",
+          "quote": "Les prestations ponctuelles sur bons de commande, pourront porter sur d'autres sites que ceux listés en annexe 1 du CCP.",
+          "found_text": "Les prestations ponctuelles sur bons de commande,\npourront porter sur d'autres sites que ceux listés en annexe 1 du CCP.",
+          "match": "EXACT",
+          "start": 4708,
+          "end": 4828
+        }
+      ],
+      "section_id": "S2",
+      "source_page": 2,
+      "source_article": "1.1",
+      "source_quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": false,
+      "human_review_required": false,
+      "id": "E2",
+      "legacy_type": "VARIABLE_SERVICE_BILLING",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "CONSEQUENCE_IF_NO_ACTION",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 2,
+        "unit": "months",
+        "qualifier": null,
+        "direction": "before",
+        "anchor": "ANNIVERSARY",
+        "anchor_text": "la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception",
+        "text": "deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception"
+      },
+      "deadline_basis": "ANNIVERSARY",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": {
+        "type": "PRICE_KEPT",
+        "polarity_for_supplier": "UNFAVORABLE",
+        "inactive_party": "SUPPLIER",
+        "text": "En cas de non-respect de ce délai, les prix de l'année en cours seront d'office reconduits pour une nouvelle période d'un an.",
+        "condition": "En cas de non-respect",
+        "duration": {
+          "amount": 1,
+          "unit": "years"
+        }
+      },
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "related_to": "PRICE_REVISION",
+        "note": "« d'office/automatiquement » décrit ici la conséquence de l'inaction (prix NON révisés), pas une révision automatique.",
+        "deadlines": {
+          "deadlines": [
+            {
+              "anniversary": "2027-12-16",
+              "deadline": "2027-10-16",
+              "past": false
+            },
+            {
+              "anniversary": "2028-12-16",
+              "deadline": "2028-10-16",
+              "past": false
+            },
+            {
+              "anniversary": "2029-12-16",
+              "deadline": "2029-10-16",
+              "past": false
+            }
+          ],
+          "exact": false,
+          "steps": [
+            "Base : date de début AU PLUS TÔT = 16/12/2026",
+            "Anniversaire n°1 = 16/12/2027 -> échéance = 16/12/2027 − 2 months = 16/10/2027",
+            "Anniversaire n°2 = 16/12/2028 -> échéance = 16/12/2028 − 2 months = 16/10/2028",
+            "Anniversaire n°3 = 16/12/2029 -> échéance = 16/12/2029 − 2 months = 16/10/2029",
+            "Dates AU PLUS TÔT : elles décalent si la date réelle est postérieure (REVIEW_REQUIRED)."
+          ],
+          "missing": [
+            "notification_date"
+          ]
+        },
+        "next_deadline": "2027-10-16",
+        "next_deadline_exact": false
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+          "found_text": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du\nmarché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+          "match": "EXACT",
+          "start": 15973,
+          "end": 16151
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "En cas de non-respect de ce délai, les prix de l'année en cours seront d'office reconduits pour une nouvelle période d'un an.",
+          "found_text": "En cas\nde non-respect de ce délai, les prix de l'année en cours seront d'office reconduits pour une\nnouvelle période d'un an.",
+          "match": "EXACT",
+          "start": 16152,
+          "end": 16277
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "En cas de non-respect de ce délai, les prix de l'année en cours seront d'office reconduits pour une nouvelle période d'un an.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [
+        "notification_date"
+      ],
+      "review_reasons": [
+        "Délai hérité d'une phrase précédente par anaphore (« ce délai ») : rattachement à confirmer."
+      ],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E3",
+      "legacy_type": "PRICE_REVISION_FORFEITURE",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "CONSEQUENCE_IF_NO_ACTION",
+      "actor": "BUYER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 2,
+        "unit": "months",
+        "qualifier": null,
+        "direction": "before",
+        "anchor": "ANNIVERSARY",
+        "anchor_text": "la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception",
+        "text": "deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception"
+      },
+      "deadline_basis": "ANNIVERSARY",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": {
+        "type": "DEEMED_ACCEPTED",
+        "polarity_for_supplier": "FAVORABLE",
+        "inactive_party": "BUYER",
+        "text": "Par ailleurs, l'absence de réponse de la part de l'administration dans ce délai de deux mois vaudra acceptation des nouveaux prix du titulaire.",
+        "condition": "l'absence de réponse"
+      },
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "related_to": "PRICE_REVISION",
+        "deadlines": {
+          "deadlines": [
+            {
+              "anniversary": "2027-12-16",
+              "deadline": "2027-10-16",
+              "past": false
+            },
+            {
+              "anniversary": "2028-12-16",
+              "deadline": "2028-10-16",
+              "past": false
+            },
+            {
+              "anniversary": "2029-12-16",
+              "deadline": "2029-10-16",
+              "past": false
+            }
+          ],
+          "exact": false,
+          "steps": [
+            "Base : date de début AU PLUS TÔT = 16/12/2026",
+            "Anniversaire n°1 = 16/12/2027 -> échéance = 16/12/2027 − 2 months = 16/10/2027",
+            "Anniversaire n°2 = 16/12/2028 -> échéance = 16/12/2028 − 2 months = 16/10/2028",
+            "Anniversaire n°3 = 16/12/2029 -> échéance = 16/12/2029 − 2 months = 16/10/2029",
+            "Dates AU PLUS TÔT : elles décalent si la date réelle est postérieure (REVIEW_REQUIRED)."
+          ],
+          "missing": [
+            "notification_date"
+          ]
+        },
+        "next_deadline": "2027-10-16",
+        "next_deadline_exact": false,
+        "note_polarity": "Conséquence FAVORABLE au titulaire (inaction de l'acheteur)."
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+          "found_text": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du\nmarché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+          "match": "EXACT",
+          "start": 15973,
+          "end": 16151
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Par ailleurs, l'absence de réponse de la part de l'administration dans ce délai de deux mois vaudra acceptation des nouveaux prix du titulaire.",
+          "found_text": "Par ailleurs, l'absence de réponse de la part de l'administration dans ce délai de deux mois\nvaudra acceptation des nouveaux prix du titulaire.",
+          "match": "EXACT",
+          "start": 16278,
+          "end": 16421
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "Par ailleurs, l'absence de réponse de la part de l'administration dans ce délai de deux mois vaudra acceptation des nouveaux prix du titulaire.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [
+        "notification_date"
+      ],
+      "review_reasons": [
+        "Délai hérité d'une phrase précédente par anaphore (« ce délai ») : rattachement à confirmer."
+      ],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E4",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "PRICE_REVISION",
+      "actor": "UNKNOWN",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "ON_REQUEST",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "first_period_firm": true,
+        "in_price_section": true,
+        "revision_frequency": "ANNUAL",
+        "applies_from": "RENEWAL_PERIODS",
+        "formula": "P=P0 (BtoB / BtoB0)",
+        "index_identifiers": [
+          "010766785"
+        ],
+        "index_name": "Indices des prix de production des services français aux entreprises françaises",
+        "application_timing": "La mise à jour des prix s'effectuera en même temps que la première facturation des exercices de reconduction.",
+        "calculation": null
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Les prix du marché seront fermes la première année d'exécution.",
+          "found_text": "Les prix du marché seront fermes la première année d'exécution.",
+          "match": "EXACT",
+          "start": 14684,
+          "end": 14747
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "En cas de reconduction, ils seront révisés annuellement en début de période de reconduction, à chaque anniversaire, c'est à dire à la date de prise d'effet du marché.",
+          "found_text": "En cas de reconduction, ils seront révisés annuellement en début de période de reconduction, à\nchaque anniversaire, c'est à dire à la date de prise d'effet du marché.",
+          "match": "EXACT",
+          "start": 14749,
+          "end": 14915
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Les prix du marché seront révisés par application de la formule suivante :",
+          "found_text": "Les prix du marché seront\nrévisés par application de la formule suivante :",
+          "match": "EXACT",
+          "start": 14916,
+          "end": 14990
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "P=P0 (BtoB / BtoB0) − P : Prix révisé − Po : Prix initial − BtoB : Indices des prix de production des services français aux entreprises françaises (BtoB) - CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, dernier indice connu à la date de la demande de révision des conditions financières − BtoB0 : Indices des prix de production des services français aux entreprises françaises (BtoB)",
+          "found_text": "P=P0 (BtoB / BtoB0)\n− P : Prix révisé\n− Po : Prix initial\n− BtoB : Indices des prix de production des services français aux entreprises françaises (BtoB) -\nCPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee\n010766785, dernier indice connu à la date de la demande de révision des conditions financières\n− BtoB0 : Indices des prix de production des services français aux entreprises françaises (BtoB)",
+          "match": "EXACT",
+          "start": 14992,
+          "end": 15433
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "- CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, indice applicable au mois d'établissement des prix.",
+          "found_text": "- CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee\n010766785, indice applicable au mois d'établissement des prix.",
+          "match": "EXACT",
+          "start": 15434,
+          "end": 15592
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "La mise à jour des prix s'effectuera en même temps que la première facturation des exercices de reconduction.",
+          "found_text": "La mise à jour des prix s'effectuera en même temps que la première facturation des exercices de\nreconduction.",
+          "match": "EXACT",
+          "start": 15594,
+          "end": 15703
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Il doit, lors de sa demande de révision des prix, fournir les éléments de détermination de cette révision (relevé des indices).",
+          "found_text": "Il doit, lors de sa demande de révision des prix, fournir les éléments de\ndétermination de cette révision (relevé des indices).",
+          "match": "EXACT",
+          "start": 16559,
+          "end": 16686
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 6,
+          "page_end": 6,
+          "article": "4.1.1",
+          "quote": "Au-delà, il fera l'objet d'une révision dans les conditions de l'article 4.3 du présent document.",
+          "found_text": "Au-delà, il fera\nl'objet d'une révision dans les conditions de l'article 4.3 du présent document.",
+          "match": "EXACT",
+          "start": 13819,
+          "end": 13916
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 6,
+          "page_end": 6,
+          "article": "4.1.2",
+          "quote": "Au-delà, il sera révisé dans les conditions de l'article 4.3 du présent document.",
+          "found_text": "Au-delà, il sera révisé dans les conditions de l'article 4.3 du présent document.",
+          "match": "EXACT",
+          "start": 14167,
+          "end": 14248
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "Les prix du marché seront fermes la première année d'exécution.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [
+        "valeur de l'indice de base I0",
+        "valeur de l'indice de révision In",
+        "montant annuel du marché (le maximum des bons de commande n'est pas utilisé)"
+      ],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E5",
+      "legacy_type": "PRICE_REVISION",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "PRICE_REVISION_DEADLINE",
+      "actor": "SUPPLIER",
+      "actor_basis": "INFERRED_FROM_SECTION",
+      "action_required": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 2,
+        "unit": "months",
+        "qualifier": null,
+        "direction": "before",
+        "anchor": "ANNIVERSARY",
+        "anchor_text": "la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception",
+        "text": "deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception"
+      },
+      "deadline_basis": "ANNIVERSARY",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "form": "LETTRE_RECOMMANDEE_AR",
+        "deadlines": {
+          "deadlines": [
+            {
+              "anniversary": "2027-12-16",
+              "deadline": "2027-10-16",
+              "past": false
+            },
+            {
+              "anniversary": "2028-12-16",
+              "deadline": "2028-10-16",
+              "past": false
+            },
+            {
+              "anniversary": "2029-12-16",
+              "deadline": "2029-10-16",
+              "past": false
+            }
+          ],
+          "exact": false,
+          "steps": [
+            "Base : date de début AU PLUS TÔT = 16/12/2026",
+            "Anniversaire n°1 = 16/12/2027 -> échéance = 16/12/2027 − 2 months = 16/10/2027",
+            "Anniversaire n°2 = 16/12/2028 -> échéance = 16/12/2028 − 2 months = 16/10/2028",
+            "Anniversaire n°3 = 16/12/2029 -> échéance = 16/12/2029 − 2 months = 16/10/2029",
+            "Dates AU PLUS TÔT : elles décalent si la date réelle est postérieure (REVIEW_REQUIRED)."
+          ],
+          "missing": [
+            "notification_date"
+          ]
+        },
+        "next_deadline": "2027-10-16",
+        "next_deadline_exact": false
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+          "found_text": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du\nmarché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+          "match": "EXACT",
+          "start": 15973,
+          "end": 16151
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception.",
+      "interpreter": "FRAMES",
+      "confidence": 0.75,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [
+        "notification_date"
+      ],
+      "review_reasons": [
+        "Acteur non explicite dans la phrase (base : INFERRED_FROM_SECTION)."
+      ],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E6",
+      "legacy_type": "PRICE_REVISION_DEADLINE",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "SUPPLIER_ACTION_REQUIRED",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "Nota important L'attention du Titulaire est appelée sur le fait qu'il lui appartient de calculer le coefficient de révision applicable.",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "modality": "DEONTIC",
+        "related_to": "PRICE_REVISION"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Nota important L'attention du Titulaire est appelée sur le fait qu'il lui appartient de calculer le coefficient de révision applicable.",
+          "found_text": "Nota important\nL'attention du Titulaire est appelée sur le fait qu'il lui appartient de calculer le coefficient de\nrévision applicable.",
+          "match": "EXACT",
+          "start": 16423,
+          "end": 16558
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "Nota important L'attention du Titulaire est appelée sur le fait qu'il lui appartient de calculer le coefficient de révision applicable.",
+      "interpreter": "FRAMES",
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E7",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "SUPPLIER_ACTION_REQUIRED",
+      "actor": "SUPPLIER",
+      "actor_basis": "PRONOUN",
+      "action_required": "Il doit, lors de sa demande de révision des prix, fournir les éléments de détermination de cette révision (relevé des indices).",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "modality": "DEONTIC",
+        "related_to": "PRICE_REVISION"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Il doit, lors de sa demande de révision des prix, fournir les éléments de détermination de cette révision (relevé des indices).",
+          "found_text": "Il doit, lors de sa demande de révision des prix, fournir les éléments de\ndétermination de cette révision (relevé des indices).",
+          "match": "EXACT",
+          "start": 16559,
+          "end": 16686
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "Il doit, lors de sa demande de révision des prix, fournir les éléments de détermination de cette révision (relevé des indices).",
+      "interpreter": "FRAMES",
+      "confidence": 0.75,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E8",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "SUPPLIER_ACTION_REQUIRED",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "Le titulaire transmettra par ailleurs une décomposition du prix global et forfaitaire ainsi qu'un bordereau des prix unitaires révisé.",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "modality": "FUTURE_INDICATIVE",
+        "related_to": "PRICE_REVISION"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "page_end": 7,
+          "article": "4.3",
+          "quote": "Le titulaire transmettra par ailleurs une décomposition du prix global et forfaitaire ainsi qu'un bordereau des prix unitaires révisé.",
+          "found_text": "Le titulaire transmettra par ailleurs une\ndécomposition du prix global et forfaitaire ainsi qu'un bordereau des prix unitaires révisé.",
+          "match": "EXACT",
+          "start": 16687,
+          "end": 16821
+        }
+      ],
+      "section_id": "S20",
+      "source_page": 7,
+      "source_article": "4.3",
+      "source_quote": "Le titulaire transmettra par ailleurs une décomposition du prix global et forfaitaire ainsi qu'un bordereau des prix unitaires révisé.",
+      "interpreter": "FRAMES",
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E9",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "PRICE_REVISION_THRESHOLD",
+      "actor": "UNKNOWN",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [
+        {
+          "value": 3.0,
+          "role": "CAP",
+          "subrole": "CAP_ANNUAL",
+          "raw": "3%"
+        },
+        {
+          "value": 9.0,
+          "role": "CAP",
+          "subrole": "CAP_CUMULATIVE",
+          "raw": "9 %"
+        }
+      ],
+      "attributes": {
+        "kind": "CAP_ANNUAL+CAP_CUMULATIVE"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.3",
+          "quote": "La variation des prix du marché est plafonnée à une augmentation maximale annuelle de 3% par rapport aux prix de l'année précédente.",
+          "found_text": "La variation des prix du marché est plafonnée à une augmentation maximale annuelle de 3% par\nrapport aux prix de l'année précédente.",
+          "match": "EXACT",
+          "start": 16847,
+          "end": 16979
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.3",
+          "quote": "Il est donc précisé que l'augmentation des prix du marché ne pourra excéder 9 % sur la totalité de la durée de l'accord-cadre (4 ans au maximum).",
+          "found_text": "Il est donc précisé que l'augmentation des prix du marché ne pourra excéder 9 % sur la totalité\nde la durée de l'accord-cadre (4 ans au maximum).",
+          "match": "EXACT",
+          "start": 16980,
+          "end": 17125
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.3",
+          "quote": "Dans le cas où l'application de la clause de révision des prix mentionnée à l'article 4.2.1. conduirait à une variation annuelle des prix unitaires de base supérieure à 3 %, le titulaire sera tenu d'exécuter les prestations de l'accord-cadre au prix plafonné.",
+          "found_text": "Dans le cas où l'application de la clause de révision des prix mentionnée à l'article 4.2.1.\nconduirait à une variation annuelle des prix unitaires de base supérieure à 3 %, le titulaire sera\ntenu d'exécuter les prestations de l'accord-cadre au prix plafonné.",
+          "match": "EXACT",
+          "start": 17127,
+          "end": 17386
+        }
+      ],
+      "section_id": "S21",
+      "source_page": 8,
+      "source_article": "4.2.3",
+      "source_quote": "La variation des prix du marché est plafonnée à une augmentation maximale annuelle de 3% par rapport aux prix de l'année précédente.",
+      "interpreter": "FRAMES",
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E10",
+      "legacy_type": "PRICE_REVISION_THRESHOLD",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "PRICE_REVISION_THRESHOLD",
+      "actor": "BUYER",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "Dans le cas où les prix pratiqués ne pourraient satisfaire la clause butoir, le pouvoir adjudicateur se réserve le droit de résilier sans indemnité la partie non exécutée du marché.",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "kind": "SAFEGUARD"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.4",
+          "quote": "Dans le cas où les prix pratiqués ne pourraient satisfaire la clause butoir, le pouvoir adjudicateur se réserve le droit de résilier sans indemnité la partie non exécutée du marché.",
+          "found_text": "Dans le cas où les prix pratiqués ne pourraient satisfaire la clause butoir, le pouvoir adjudicateur\nse réserve le droit de résilier sans indemnité la partie non exécutée du marché.",
+          "match": "EXACT",
+          "start": 17416,
+          "end": 17597
+        }
+      ],
+      "section_id": "S22",
+      "source_page": 8,
+      "source_article": "4.2.4",
+      "source_quote": "Dans le cas où les prix pratiqués ne pourraient satisfaire la clause butoir, le pouvoir adjudicateur se réserve le droit de résilier sans indemnité la partie non exécutée du marché.",
+      "interpreter": "FRAMES",
+      "confidence": 0.75,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E11",
+      "legacy_type": "PRICE_REVISION_THRESHOLD",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "REEXAMINATION_RIGHT",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 30,
+        "unit": "days",
+        "qualifier": "calendaires",
+        "direction": "after",
+        "anchor": "RECEIPT",
+        "anchor_text": "sa réception",
+        "text": "30 jours calendaires courant à compter de sa réception"
+      },
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [
+        {
+          "value": 80.0,
+          "role": "OTHER",
+          "subrole": "COST_SHARE",
+          "raw": "80%"
+        },
+        {
+          "value": 20.0,
+          "role": "OTHER",
+          "subrole": "COST_SHARE",
+          "raw": "20%"
+        }
+      ],
+      "attributes": {
+        "buyer_discretion": true
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.5",
+          "quote": "Dans ce cas, le titulaire peut adresser à l'acheteur, une demande comprenant :",
+          "found_text": "Dans ce cas, le titulaire peut adresser à l'acheteur, une demande comprenant :",
+          "match": "EXACT",
+          "start": 18250,
+          "end": 18328
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.5",
+          "quote": "Par conséquent, 80% de cette augmentation sera prise en charge par le pouvoir adjudicateur et 20% par le titulaire.",
+          "found_text": "Par conséquent, 80% de cette augmentation\nsera prise en charge par le pouvoir adjudicateur et 20% par le titulaire.",
+          "match": "EXACT",
+          "start": 19317,
+          "end": 19432
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "page_end": 8,
+          "article": "4.2.5",
+          "quote": "L'acheteur se prononce sur ladite demande dans un délai de 30 jours calendaires courant à compter de sa réception.",
+          "found_text": "L'acheteur se prononce sur ladite demande dans un délai de 30 jours calendaires courant à\ncompter de sa réception.",
+          "match": "EXACT",
+          "start": 18654,
+          "end": 18768
+        }
+      ],
+      "section_id": "S23",
+      "source_page": 8,
+      "source_article": "4.2.5",
+      "source_quote": "Dans ce cas, le titulaire peut adresser à l'acheteur, une demande comprenant :",
+      "interpreter": "FRAMES",
+      "confidence": 0.75,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [
+        "Mise en œuvre à la discrétion de l'acheteur : droit non garanti."
+      ],
+      "critical": false,
+      "human_review_required": false,
+      "id": "E12",
+      "legacy_type": "OTHER_FINANCIAL_RIGHT",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "ADVANCE_PAYMENT",
+      "actor": "UNKNOWN",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [
+        {
+          "value": 50000.0,
+          "unit": "EUR HT",
+          "role": "ADVANCE_ELIGIBILITY_THRESHOLD",
+          "raw": "50 000 € HT"
+        }
+      ],
+      "percentages": [
+        {
+          "value": 5.0,
+          "role": "OTHER",
+          "subrole": "ADVANCE_RATE",
+          "raw": "5%"
+        },
+        {
+          "value": 65.0,
+          "role": "OTHER",
+          "subrole": "ADVANCE_REPAYMENT",
+          "raw": "65 %"
+        },
+        {
+          "value": 80.0,
+          "role": "OTHER",
+          "subrole": "ADVANCE_REPAYMENT",
+          "raw": "80 %"
+        }
+      ],
+      "attributes": {
+        "conditions": [
+          "Sauf renoncement du titulaire porté à l'acte d'engagement, une avance lui sera mandatée dans les conditions spécifiées aux articles R. 2191-3, R. 2191-7 et R. 2391-16 du Code de la commande publique.",
+          "Il est précisé que le versement de l'avance est conditionné à la constitution d'une garantie à première demande, portant sur la totalité du montant de l'avance, conformément aux dispositions des artic",
+          "Cette garantie à première demande pourra être remplacée, sur demande du titulaire et sauf opposition de la personne publique, par une caution personnelle et solidaire."
+        ]
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Sauf renoncement du titulaire porté à l'acte d'engagement, une avance lui sera mandatée dans les conditions spécifiées aux articles R. 2191-3, R. 2191-7 et R. 2391-16 du Code de la commande publique.",
+          "found_text": "Sauf renoncement du titulaire porté à l'acte d'engagement, une avance lui sera mandatée dans\nles conditions spécifiées aux articles R. 2191-3, R. 2191-7 et R. 2391-16 du Code de la commande\npublique.",
+          "match": "EXACT",
+          "start": 22819,
+          "end": 23018
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Le montant de l'avance versée au titulaire n'est ni révisable ni actualisable.",
+          "found_text": "Le montant de l'avance versée au titulaire n'est ni révisable ni actualisable.",
+          "match": "EXACT",
+          "start": 23020,
+          "end": 23098
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Cette avance sera mandatée sans formalité dans le délai d'un (1) mois après la date d'effet qui comporte commencement d'exécution des prestations prévues au marché.",
+          "found_text": "Cette avance sera\nmandatée sans formalité dans le délai d'un (1) mois après la date d'effet qui comporte\ncommencement d'exécution des prestations prévues au marché.",
+          "match": "EXACT",
+          "start": 23099,
+          "end": 23263
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Conformément à l'option B de l'article 11.1 du CCAG-FCS, l'accord-cadre prévoit l'application des taux d'avance minimaux réglementaires fixés par l'article R. 2191-7 du Code de la commande publique, soit 5% de chaque bon de commande d'un montant supérieur à 50 000 € HT.",
+          "found_text": "Conformément à l'option B de l'article 11.1 du CCAG-FCS, l'accord-cadre prévoit l'application\ndes taux d'avance minimaux réglementaires fixés par l'article R. 2191-7 du Code de la commande\npublique, soit 5% de chaque bon de commande d'un montant supérieur à 50 000 € HT.",
+          "match": "EXACT",
+          "start": 23265,
+          "end": 23535
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "L'avance est remboursée dans les conditions prévues aux articles R. 2191-11 et R. 2191-19 du Code de la commande publique.",
+          "found_text": "L'avance est remboursée dans les conditions prévues aux articles R. 2191-11 et R. 2191-19 du\nCode de la commande publique.",
+          "match": "EXACT",
+          "start": 23622,
+          "end": 23744
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Le remboursement de l'avance s'impute sur les sommes dues au titulaire par précompte sur les sommes dues à titre d'acomptes, de règlement partiel définitif ou de solde, quand le montant des prestations exécutées atteint 65 % du montant toutes taxes comprises du bon de commande concerné.",
+          "found_text": "Le remboursement de l'avance s'impute sur les sommes dues au titulaire par précompte sur les\nsommes dues à titre d'acomptes, de règlement partiel définitif ou de solde, quand le montant des\nprestations exécutées atteint 65 % du montant toutes taxes comprises du bon de commande\nconcerné.",
+          "match": "EXACT",
+          "start": 23745,
+          "end": 24032
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Le remboursement de l'avance doit être terminé lorsque le montant des prestations exécutées par le titulaire atteint 80 % du montant toutes taxes comprises du montant du marché.",
+          "found_text": "Le remboursement de l'avance doit être terminé lorsque le montant des prestations\nexécutées par le titulaire atteint 80 % du montant toutes taxes comprises du montant du marché.",
+          "match": "EXACT",
+          "start": 24033,
+          "end": 24210
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Il est précisé que le versement de l'avance est conditionné à la constitution d'une garantie à première demande, portant sur la totalité du montant de l'avance, conformément aux dispositions des articles R. 2191-36 à R. 2191-42 du Code de la commande publique.",
+          "found_text": "Il est précisé que le versement de l'avance est conditionné à la constitution d'une garantie à\npremière demande, portant sur la totalité du montant de l'avance, conformément aux\ndispositions des articles R. 2191-36 à R. 2191-42 du Code de la commande publique.",
+          "match": "EXACT",
+          "start": 24212,
+          "end": 24472
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Il est précisé que le versement de l'avance est conditionné à la constitution d'une garantie à première demande, portant sur la totalité du montant de l'avance, conformément aux dispositions des articles R. 2191-36 à R. 2191-42 du Code de la commande publique.",
+          "found_text": "Il est précisé que le versement de l'avance est conditionné à la constitution d'une garantie à\npremière demande, portant sur la totalité du montant de l'avance, conformément aux\ndispositions des articles R. 2191-36 à R. 2191-42 du Code de la commande publique.",
+          "match": "EXACT",
+          "start": 24212,
+          "end": 24472
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.3",
+          "quote": "Cette garantie à première demande pourra être remplacée, sur demande du titulaire et sauf opposition de la personne publique, par une caution personnelle et solidaire.",
+          "found_text": "Cette\ngarantie à première demande pourra être remplacée, sur demande du titulaire et sauf opposition\nde la personne publique, par une caution personnelle et solidaire.",
+          "match": "EXACT",
+          "start": 24473,
+          "end": 24640
+        }
+      ],
+      "section_id": "S25",
+      "source_page": 10,
+      "source_article": "4.3",
+      "source_quote": "Sauf renoncement du titulaire porté à l'acte d'engagement, une avance lui sera mandatée dans les conditions spécifiées aux articles R. 2191-3, R. 2191-7 et R. 2391-16 du Code de la commande publique.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": false,
+      "human_review_required": false,
+      "id": "E13",
+      "legacy_type": "OTHER_FINANCIAL_RIGHT",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "LATE_PAYMENT_INTEREST",
+      "actor": "UNKNOWN",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.4.1",
+          "quote": "En application de l'article L. 2192-13 et R. 2192-31 du même code, le dépassement du délai de paiement ouvre de plein droit et sans autre formalité pour le titulaire du marché, à compter du jour d'expiration du délai, au bénéfice d'intérêts moratoires.",
+          "found_text": "En application de l'article L. 2192-13 et R. 2192-31 du même code, le dépassement du délai de\npaiement ouvre de plein droit et sans autre formalité pour le titulaire du marché, à compter du\njour d'expiration du délai, au bénéfice d'intérêts moratoires.",
+          "match": "EXACT",
+          "start": 25096,
+          "end": 25348
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.4.1",
+          "quote": "Les intérêts moratoires ne sont pas assujettis à la taxe sur la valeur ajoutée.",
+          "found_text": "Les intérêts moratoires ne sont pas assujettis à la taxe sur la valeur ajoutée.",
+          "match": "EXACT",
+          "start": 25349,
+          "end": 25428
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.4.1",
+          "quote": "Le taux des intérêts moratoires applicable est celui de l'intérêt légal en vigueur à la date à laquelle les intérêts ont commencé à courir, augmenté de huit points.",
+          "found_text": "Le taux des intérêts moratoires applicable est celui de l'intérêt légal en vigueur à la date à laquelle\nles intérêts ont commencé à courir, augmenté de huit points.",
+          "match": "EXACT",
+          "start": 25429,
+          "end": 25593
+        }
+      ],
+      "section_id": "S27",
+      "source_page": 10,
+      "source_article": "4.4.1",
+      "source_quote": "En application de l'article L. 2192-13 et R. 2192-31 du même code, le dépassement du délai de paiement ouvre de plein droit et sans autre formalité pour le titulaire du marché, à compter du jour d'expiration du délai, au bénéfice d'intérêts moratoires.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": false,
+      "human_review_required": false,
+      "id": "E14",
+      "legacy_type": "OTHER_FINANCIAL_RIGHT",
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "PAYMENT_TERM",
+      "actor": "BUYER",
+      "actor_basis": "INFERRED_FROM_SECTION",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 30,
+        "unit": "days",
+        "qualifier": null,
+        "direction": "after",
+        "anchor": "RECEIPT",
+        "anchor_text": "la date de réception de la demande ou de la date d'admission des prestations",
+        "text": "30 jours à compter de la date de réception de la demande ou de la date d'admission des prestations"
+      },
+      "deadline_basis": "RECEIPT",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "page_end": 10,
+          "article": "4.4.1",
+          "quote": "En application des articles L. 2192-10 et R. 2192-10 du Code de la commande publique le paiement des sommes dues devra intervenir dans un délai de 30 jours à compter de la date de réception de la demande ou de la date d'admission des prestations.",
+          "found_text": "En application des articles L. 2192-10 et R. 2192-10 du Code de la commande publique le\npaiement des sommes dues devra intervenir dans un délai de 30 jours à compter de la date de\nréception de la demande ou de la date d'admission des prestations.",
+          "match": "EXACT",
+          "start": 24849,
+          "end": 25095
+        }
+      ],
+      "section_id": "S27",
+      "source_page": 10,
+      "source_article": "4.4.1",
+      "source_quote": "En application des articles L. 2192-10 et R. 2192-10 du Code de la commande publique le paiement des sommes dues devra intervenir dans un délai de 30 jours à compter de la date de réception de la demande ou de la date d'admission des prestations.",
+      "interpreter": "FRAMES",
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": false,
+      "human_review_required": false,
+      "id": "E15",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "BILLING_CONDITION",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "Satisfaire la condition préalable à la facturation : conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+      "trigger": "conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 11,
+          "page_end": 11,
+          "article": "4.4.1",
+          "quote": "L'émission de cette facture mensuelle est conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+          "found_text": "L'émission de cette facture mensuelle est conditionnée à la validation par la commune du\n« procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article\n8.1 du présent cahier des clauses particulières.",
+          "match": "EXACT",
+          "start": 26284,
+          "end": 26520
+        }
+      ],
+      "section_id": "S27",
+      "source_page": 11,
+      "source_article": "4.4.1",
+      "source_quote": "L'émission de cette facture mensuelle est conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E16",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "BILLING_CONDITION",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "Satisfaire la condition préalable à la facturation : conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+      "trigger": "conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 11,
+          "page_end": 11,
+          "article": "4.4.1",
+          "quote": "L'émission de cette facture est conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+          "found_text": "L'émission de cette facture est conditionnée à la validation par la commune du « procès-verbal\nde contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent\ncahier des clauses particulières.",
+          "match": "EXACT",
+          "start": 26900,
+          "end": 27126
+        }
+      ],
+      "section_id": "S27",
+      "source_page": 11,
+      "source_article": "4.4.1",
+      "source_quote": "L'émission de cette facture est conditionnée à la validation par la commune du « procès-verbal de contrôle qualité » établi et transmis par le titulaire conformément à l'article 8.1 du présent cahier des clauses particulières.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E17",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "CONSEQUENCE_IF_NO_ACTION",
+      "actor": "SUPPLIER",
+      "actor_basis": "EXPLICIT",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 30,
+        "unit": "days",
+        "qualifier": null,
+        "direction": "after",
+        "anchor": "NOTIFICATION",
+        "anchor_text": "cette notification, le titulaire est réputé, par son silence, avoir accepté ce montant",
+        "text": "trente jours à compter de cette notification, le titulaire est réputé, par son silence, avoir accepté ce montant"
+      },
+      "deadline_basis": "NOTIFICATION",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": {
+        "type": "DEEMED_ACCEPTED",
+        "polarity_for_supplier": "UNFAVORABLE",
+        "inactive_party": "SUPPLIER",
+        "text": "Passé un délai de trente jours à compter de cette notification, le titulaire est réputé, par son silence, avoir accepté ce montant.",
+        "condition": "Passé un délai"
+      },
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "related_to": "INVOICE"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 11,
+          "page_end": 11,
+          "article": "4.4.2",
+          "quote": "Il est notifié au titulaire si la facture a été modifiée ou si elle a été complétée comme il est dit à l'alinéa précédent.",
+          "found_text": "Il est notifié\nau titulaire si la facture a été modifiée ou si elle a été complétée comme il est dit à l'alinéa\nprécédent.",
+          "match": "EXACT",
+          "start": 27863,
+          "end": 27985
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 11,
+          "page_end": 11,
+          "article": "4.4.2",
+          "quote": "Passé un délai de trente jours à compter de cette notification, le titulaire est réputé, par son silence, avoir accepté ce montant.",
+          "found_text": "Passé un délai de trente jours à compter de cette notification, le titulaire est réputé,\npar son silence, avoir accepté ce montant.",
+          "match": "EXACT",
+          "start": 27986,
+          "end": 28117
+        }
+      ],
+      "section_id": "S28",
+      "source_page": 11,
+      "source_article": "4.4.2",
+      "source_quote": "Passé un délai de trente jours à compter de cette notification, le titulaire est réputé, par son silence, avoir accepté ce montant.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E18",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "CONSEQUENCE_IF_NO_ACTION",
+      "actor": "SUPPLIER",
+      "actor_basis": "PRONOUN",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": {
+        "amount": 8,
+        "unit": "days",
+        "qualifier": null,
+        "direction": "before",
+        "anchor": "OTHER",
+        "anchor_text": "la réalisation de la prestation",
+        "text": "8 jours avant la réalisation de la prestation"
+      },
+      "deadline_basis": "OTHER",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": {
+        "type": "DEEMED_NOT_PERFORMED",
+        "polarity_for_supplier": "UNFAVORABLE",
+        "inactive_party": "SUPPLIER",
+        "text": "A défaut d'une telle communication, il sera réputé ne pas avoir réalisé l'opération.",
+        "condition": "A défaut"
+      },
+      "amounts": [],
+      "percentages": [],
+      "attributes": {
+        "related_to": "OTHER"
+      },
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 14,
+          "page_end": 14,
+          "article": "5.1.3",
+          "quote": "Il communiquera la date de cette intervention à l'interlocuteur désigné de la commune, 8 jours avant la réalisation de la prestation.",
+          "found_text": "Il communiquera la date de cette intervention à l'interlocuteur\ndésigné de la commune, 8 jours avant la réalisation de la prestation.",
+          "match": "EXACT",
+          "start": 36718,
+          "end": 36851
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 14,
+          "page_end": 14,
+          "article": "5.1.3",
+          "quote": "A défaut d'une telle communication, il sera réputé ne pas avoir réalisé l'opération.",
+          "found_text": "A défaut d'une telle\ncommunication, il sera réputé ne pas avoir réalisé l'opération.",
+          "match": "EXACT",
+          "start": 36852,
+          "end": 36936
+        }
+      ],
+      "section_id": "S35",
+      "source_page": 14,
+      "source_article": "5.1.3",
+      "source_quote": "A défaut d'une telle communication, il sera réputé ne pas avoir réalisé l'opération.",
+      "interpreter": "FRAMES",
+      "confidence": 0.8,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [
+        "Partie inactive déduite d'un pronom.",
+        "Délai hérité d'une phrase précédente par anaphore (« ce délai ») : rattachement à confirmer."
+      ],
+      "critical": true,
+      "human_review_required": true,
+      "id": "E19",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "event_type": "PENALTY_EXPOSURE",
+      "actor": "UNKNOWN",
+      "actor_basis": "",
+      "action_required": "",
+      "trigger": "",
+      "deadline_rule": null,
+      "deadline_basis": "",
+      "date_expression": null,
+      "consequence_if_action": "",
+      "consequence_if_no_action": null,
+      "amounts": [
+        {
+          "value": 1000.0,
+          "unit": "EUR HT",
+          "role": "PENALTY_EXEMPTION_THRESHOLD",
+          "raw": "1 000 € HT"
+        },
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "100€ "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50€ "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50€ "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50€ "
+        },
+        {
+          "value": 30.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "30€ "
+        },
+        {
+          "value": 10.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "10€ "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50 € "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50 € "
+        },
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "100€ "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50 € "
+        },
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "100€ "
+        },
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "100€ "
+        },
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "100 € "
+        },
+        {
+          "value": 200.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "200 € "
+        },
+        {
+          "value": 300.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "300 € "
+        },
+        {
+          "value": 150.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "150 € "
+        },
+        {
+          "value": 50.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "50 € "
+        },
+        {
+          "value": 100.0,
+          "unit": "EUR",
+          "role": "PENALTY_RATE",
+          "raw": "100 € "
+        }
+      ],
+      "percentages": [],
+      "attributes": {},
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 33,
+          "page_end": 33,
+          "article": "10",
+          "quote": "Par dérogation à l'article 14.1.3 du CCAG, le titulaire n'est pas exonéré des pénalités dont le montant total ne dépasse pas 1 000 € HT pour l'ensemble de l'accord-cadre.",
+          "found_text": "Par dérogation à l'article 14.1.3 du CCAG, le titulaire n'est pas exonéré des pénalités dont le\nmontant total ne dépasse pas 1 000 € HT pour l'ensemble de l'accord-cadre.",
+          "match": "EXACT",
+          "start": 88915,
+          "end": 89085
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 33,
+          "page_end": 33,
+          "article": "10",
+          "quote": "100€ par jour calendaire de retard et par planning, à Absence de transmission d'un planning compter du lendemain de la fin du délai de réponse du d'interventions titulaire et ce, jusqu'à transmission Absence sans remplacement du chef 50€ par jour ouvré de retard, jusqu'au remplacement d'équipe 50€ par jour calendaire de retard, par personne et par Absence d'information du titulaire quant aux site, à compter du lendemain du signalement de la intervenants œuvrant affectés au marché collectivité et ce, jusqu'à régularisation 50€ par jour calendaire de retard et par site, à compter Manquement du titulaire au titre de la du lendemain du signalement de la collectivité et ce, gestion des déchets jusqu'à régularisation Manquement du titulaire au titre de la 30€ par jour calendaire de retard et par site, à compter gestion des locaux de stockage mis à lsa du lendemain du signalement de la collectivité et ce, disposition du titulaire jusqu'à régularisation",
+          "found_text": "100€ par jour calendaire de retard et par planning, à\nAbsence de transmission d'un planning\ncompter du lendemain de la fin du délai de réponse du\nd'interventions\ntitulaire et ce, jusqu'à transmission\nAbsence sans remplacement du chef\n50€ par jour ouvré de retard, jusqu'au remplacement\nd'équipe\n50€ par jour calendaire de retard, par personne et par\nAbsence d'information du titulaire quant aux\nsite, à compter du lendemain du signalement de la\nintervenants œuvrant affectés au marché\ncollectivité et ce, jusqu'à régularisation\n50€ par jour calendaire de retard et par site, à compter\nManquement du titulaire au titre de la\ndu lendemain du signalement de la collectivité et ce,\ngestion des déchets\njusqu'à régularisation\nManquement du titulaire au titre de la 30€ par jour calendaire de retard et par site, à compter\ngestion des locaux de stockage mis à lsa du lendemain du signalement de la collectivité et ce,\ndisposition du titulaire jusqu'à régularisation",
+          "match": "EXACT",
+          "start": 89215,
+          "end": 90174
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 34,
+          "page_end": 34,
+          "article": "10",
+          "quote": "Rupture dans l'approvisionnement des 10€ par heure ouvrable de retard et par site, à partir du consommables mis à disposition des signalement de la collectivité et ce, jusqu'à usagers régularisation 50 € par jour calendaire de retard et par site, à compter Manquement du titulaire à ses engagements du lendemain de la demande de transmission ou du environnementaux signalement de la collectivité, jusqu'à régularisation Manquement du titulaire à son obligation de 50 € par jour calendaire de retard et par site, à compter déposer, installer ou renouveler des du lendemain de la demande de transmission ou du distributeurs de consommables signalement de la collectivité, jusqu'à régularisation Manquement du titulaire au titre de la traçabilité des passages réalisés par les 100€ par constat intervenants du titulairede son personnel affecté au marché Absence de transmission par le titulaire des 50 € par jour calendaire de retard et par site, à compter éléments recensés au titre de ses contrôles de la demande de la collectivité restée sans réponse au- internes delà de 3 jours ouvrés et ce, jusqu'à régularisation Nature de la pénalité Montant",
+          "found_text": "Rupture dans l'approvisionnement des 10€ par heure ouvrable de retard et par site, à partir du\nconsommables mis à disposition des signalement de la collectivité et ce, jusqu'à\nusagers régularisation\n50 € par jour calendaire de retard et par site, à compter\nManquement du titulaire à ses engagements\ndu lendemain de la demande de transmission ou du\nenvironnementaux\nsignalement de la collectivité, jusqu'à régularisation\nManquement du titulaire à son obligation de 50 € par jour calendaire de retard et par site, à compter\ndéposer, installer ou renouveler des du lendemain de la demande de transmission ou du\ndistributeurs de consommables signalement de la collectivité, jusqu'à régularisation\nManquement du titulaire au titre de la\ntraçabilité des passages réalisés par les\n100€ par constat\nintervenants du titulairede son personnel\naffecté au marché\nAbsence de transmission par le titulaire des 50 € par jour calendaire de retard et par site, à compter\néléments recensés au titre de ses contrôles de la demande de la collectivité restée sans réponse au-\ninternes delà de 3 jours ouvrés et ce, jusqu'à régularisation\nNature de la pénalité Montant",
+          "match": "EXACT",
+          "start": 90179,
+          "end": 91325
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 34,
+          "page_end": 34,
+          "article": "10",
+          "quote": "Absence du titulaire à une commission 100€ par constat entretien ou à un contrôle contradictoire 100€ par jour calendaire de retard à compter du Non-transmission par le titulaire de son lendemain de la fin du délai de transmission incombant rapport annuel au titulaire Non-respect du délai de reprise des 100 € par jour calendaire de retard et par désordre et ce, désordres pour défaut de qualité des jusqu'à régularisation prestations ⧫ (Délai de reprise : le lendemain pour les Pénalité forfaitaire doublée à compter du 10ème jour désordres signalés la veille avant midi) calendaire de retard Absence de réalisation des prestations 200 € par jour calendaire de retard et par site et ce, d'entretien courant planifiées au bordereau jusqu'à réalisation des fréquences d'intervention (Délai de réalisation CCP : le lendemain pour ⧫ Exécutées aux frais et risques du titulaire à compter du les absences de prestations signalées par la 8ème jour collectivité la veille avant midi) Absence de réalisation des prestations intermédiaires et de remise en état 300 € par jour calendaire de retard et par site et ce, planifiées au bordereau des fréquences jusqu'à réalisation d'intervention ⧫ (Délai de réalisation CCP : le lendemain pour Exécutées aux frais et risques du titulaire à compter du les absences de prestations signalées par la 8ème jour collectivité la veille avant midi) Absence de respect de l'obligation de demande de personnels au facilitateur en Pénalité forfaitaire de 150 € par renouvellement ou cas de besoin de renouvellement ou de changement non signalé préalablement au facilitateur changement de personnel (article 7 du CCP) Non-respect du volume d'insertion à mettre 50 € par heure d'insertion non réalisée au regard du en œuvre (article 7 du CCP) volume d'insertion prévu à l'article 7.1.2 Absence ou refus de transmission des renseignements propres à permettre le 100 € par jour calendaire de retard à compter de la contrôle de l'exécution de l'action notification d'une mise en demeure par la commune d'insertion et de formation",
+          "found_text": "Absence du titulaire à une commission\n100€ par constat\nentretien ou à un contrôle contradictoire\n100€ par jour calendaire de retard à compter du\nNon-transmission par le titulaire de son\nlendemain de la fin du délai de transmission incombant\nrapport annuel\nau titulaire\nNon-respect du délai de reprise des 100 € par jour calendaire de retard et par désordre et ce,\ndésordres pour défaut de qualité des jusqu'à régularisation\nprestations ⧫\n(Délai de reprise : le lendemain pour les Pénalité forfaitaire doublée à compter du 10ème jour\ndésordres signalés la veille avant midi) calendaire de retard\nAbsence de réalisation des prestations\n200 € par jour calendaire de retard et par site et ce,\nd'entretien courant planifiées au bordereau\njusqu'à réalisation\ndes fréquences d'intervention\n(Délai de réalisation CCP : le lendemain pour ⧫\nExécutées aux frais et risques du titulaire à compter du\nles absences de prestations signalées par la\n8ème jour\ncollectivité la veille avant midi)\nAbsence de réalisation des prestations\nintermédiaires et de remise en état 300 € par jour calendaire de retard et par site et ce,\nplanifiées au bordereau des fréquences jusqu'à réalisation\nd'intervention ⧫\n(Délai de réalisation CCP : le lendemain pour Exécutées aux frais et risques du titulaire à compter du\nles absences de prestations signalées par la 8ème jour\ncollectivité la veille avant midi)\nAbsence de respect de l'obligation de\ndemande de personnels au facilitateur en\nPénalité forfaitaire de 150 € par renouvellement ou\ncas de besoin de renouvellement ou de\nchangement non signalé préalablement au facilitateur\nchangement de personnel\n(article 7 du CCP)\nNon-respect du volume d'insertion à mettre 50 € par heure d'insertion non réalisée au regard du\nen œuvre (article 7 du CCP) volume d'insertion prévu à l'article 7.1.2\nAbsence ou refus de transmission des\nrenseignements propres à permettre le 100 € par jour calendaire de retard à compter de la\ncontrôle de l'exécution de l'action notification d'une mise en demeure par la commune\nd'insertion et de formation",
+          "match": "EXACT",
+          "start": 91327,
+          "end": 93376
+        }
+      ],
+      "section_id": "S82",
+      "source_page": 33,
+      "source_article": "10",
+      "source_quote": "Par dérogation à l'article 14.1.3 du CCAG, le titulaire n'est pas exonéré des pénalités dont le montant total ne dépasse pas 1 000 € HT pour l'ensemble de l'accord-cadre.",
+      "interpreter": "FRAMES",
+      "confidence": 0.75,
+      "status": "REVIEW_REQUIRED",
+      "checks": [
+        "OK: toutes les citations retrouvées dans la source",
+        "OK: nombres ancrés dans la clause"
+      ],
+      "missing_information": [],
+      "review_reasons": [],
+      "critical": false,
+      "human_review_required": false,
+      "id": "E20",
+      "legacy_type": null,
+      "SIMULATED_EXAMPLE": false
+    }
+  ],
+  "rejected_unsupported": [],
+  "uncovered_candidates": [
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "patterns": [
+        "PRICE_CHANGE"
+      ],
+      "text": "✓ L'exposé des causes à l'origine de l'augmentation des coûts d'exécution du marché ; ✓ L'étendue de cette augmentation, établie sur la base de justificatifs dont la production est extérieure au demandeur (facture des fournisseurs du titulaire, variation de l'indice de référence utilisée pour la rév",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Zone économique forte non couverte par une interprétation vérifiée."
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 32,
+      "article": "8.5",
+      "patterns": [
+        "ECONOMIC_OBLIGATION_WITH_DEADLINE"
+      ],
+      "text": "Lorsque la commune conclura à une absence de réalisation des prestations prévues au marché ou au bon de commande, le titulaire s'engage, pour toute saisine de la collectivité ayant pour objet l'absence de réalisation de prestations notifiée avant 12 heures, à procéder à une action corrective le lend",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Zone économique forte non couverte par une interprétation vérifiée."
+    }
+  ],
+  "critical_checklist": {
+    "echeance_revision": {
+      "outcome": "FOUND",
+      "events": [
+        "E6"
+      ],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.5",
+          "patterns": [
+            "PRICE_CHANGE"
+          ],
+          "text": "✓ L'exposé des causes à l'origine de l'augmentation des coûts d'exécution du marché ; ✓ L'étendue de cette augmentation, établie sur la base de justificatifs dont la production est extérieure au demandeur (facture des fournisseurs du titulaire, variation de l'indice de référence utilisée pour la rév",
+          "status": "REVIEW_REQUIRED",
+          "reason": "Zone économique forte non couverte par une interprétation vérifiée."
+        }
+      ]
+    },
+    "action_obligatoire_titulaire": {
+      "outcome": "FOUND",
+      "events": [
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E16",
+        "E17"
+      ],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": []
+    },
+    "forclusion_perte_de_droit": {
+      "outcome": "FOUND",
+      "events": [
+        "E3",
+        "E4",
+        "E18",
+        "E19"
+      ],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": []
+    },
+    "seuil_ou_plafond_revision": {
+      "outcome": "FOUND",
+      "events": [
+        "E10",
+        "E11"
+      ],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": []
+    },
+    "nouveau_prix_du": {
+      "outcome": "FOUND",
+      "events": [
+        "E5"
+      ],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.5",
+          "patterns": [
+            "PRICE_CHANGE"
+          ],
+          "text": "✓ L'exposé des causes à l'origine de l'augmentation des coûts d'exécution du marché ; ✓ L'étendue de cette augmentation, établie sur la base de justificatifs dont la production est extérieure au demandeur (facture des fournisseurs du titulaire, variation de l'indice de référence utilisée pour la rév",
+          "status": "REVIEW_REQUIRED",
+          "reason": "Zone économique forte non couverte par une interprétation vérifiée."
+        }
+      ]
+    },
+    "avenant_modifiant_le_prix": {
+      "outcome": "NOT_FOUND",
+      "events": [],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": []
+    },
+    "prestation_commandee_facturable": {
+      "outcome": "FOUND",
+      "events": [
+        "E1",
+        "E16",
+        "E17"
+      ],
+      "human_review_required": true,
+      "examined_candidate_zones": 113,
+      "uncovered_strong_zones": []
+    }
+  },
+  "coherence_checks": [
+    "CAP != THRESHOLD vérifié",
+    "plafonds annuel / cumulé distingués",
+    "montant BDC ≠ valeur du marché",
+    "fréquence opérationnelle ≠ fréquence de révision",
+    "conséquence d'inaction ≠ action automatique favorable",
+    "date conditionnelle non absolue",
+    "durée calculée vs énoncée"
+  ],
+  "baseline_signals": [
+    {
+      "baseline_field": "revision_exists",
+      "baseline_value": true,
+      "page": 7,
+      "explained_by_v1": true,
+      "status": "OK"
+    },
+    {
+      "baseline_field": "cap_exists",
+      "baseline_value": true,
+      "page": 8,
+      "explained_by_v1": true,
+      "status": "OK"
+    },
+    {
+      "baseline_field": "threshold_exists",
+      "baseline_value": true,
+      "page": 8,
+      "explained_by_v1": true,
+      "status": "OK"
+    },
+    {
+      "baseline_field": "purchase_orders_exist",
+      "baseline_value": true,
+      "page": 2,
+      "explained_by_v1": true,
+      "status": "OK"
+    }
+  ],
+  "segmentation": {
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf": {
+      "sections": [
+        {
+          "number": null,
+          "title": "(préambule)",
+          "level": 0,
+          "page_start": 1,
+          "page_end": 1
+        },
+        {
+          "number": "1",
+          "title": "OBJET DU MARCHE - DISPOSITIONS GENERALES",
+          "level": 1,
+          "page_start": 2,
+          "page_end": 2
+        },
+        {
+          "number": "1.1",
+          "title": "Objet et conditions juridiques de l'accord-cadre",
+          "level": 2,
+          "page_start": 2,
+          "page_end": 2
+        },
+        {
+          "number": "1.2",
+          "title": "Allotissement",
+          "level": 2,
+          "page_start": 2,
+          "page_end": 2
+        },
+        {
+          "number": "1.3",
+          "title": "Tranches",
+          "level": 2,
+          "page_start": 2,
+          "page_end": 3
+        },
+        {
+          "number": "1.5",
+          "title": "Sites concernés",
+          "level": 2,
+          "page_start": 3,
+          "page_end": 3
+        },
+        {
+          "number": "1.6",
+          "title": "Garantie de résultat",
+          "level": 2,
+          "page_start": 3,
+          "page_end": 3
+        },
+        {
+          "number": "2",
+          "title": "PIECES CONSTITUTIVES DE L'ACCORD-CADRE",
+          "level": 1,
+          "page_start": 4,
+          "page_end": 4
+        },
+        {
+          "number": "2.1",
+          "title": "Pièces particulières",
+          "level": 2,
+          "page_start": 4,
+          "page_end": 4
+        },
+        {
+          "number": "2.2",
+          "title": "Pièce générale",
+          "level": 2,
+          "page_start": 4,
+          "page_end": 5
+        },
+        {
+          "number": "3",
+          "title": "DUREE DE L'ACCORD-CADRE ET DELAIS",
+          "level": 1,
+          "page_start": 5,
+          "page_end": 5
+        },
+        {
+          "number": "3.1",
+          "title": "Durée de l'accord-cadre",
+          "level": 2,
+          "page_start": 5,
+          "page_end": 5
+        },
+        {
+          "number": "3.2",
+          "title": "Fréquence / période de réalisation des prestations",
+          "level": 2,
+          "page_start": 5,
+          "page_end": 5
+        },
+        {
+          "number": "3.2.1",
+          "title": "Prestations récurrentes - part forfaitaire",
+          "level": 3,
+          "page_start": 5,
+          "page_end": 5
+        },
+        {
+          "number": "3.2.2",
+          "title": "Prestations ponctuelles de nettoyage - partie à bons de commande sur prix",
+          "level": 3,
+          "page_start": 5,
+          "page_end": 5
+        },
+        {
+          "number": "4",
+          "title": "PRIX ET MODALITES DE REGLEMENT",
+          "level": 1,
+          "page_start": 6,
+          "page_end": 6
+        },
+        {
+          "number": "4.1",
+          "title": "Contenu et Décomposition du prix",
+          "level": 2,
+          "page_start": 6,
+          "page_end": 6
+        },
+        {
+          "number": "4.1.1",
+          "title": "Partie forfaitaire",
+          "level": 3,
+          "page_start": 6,
+          "page_end": 6
+        },
+        {
+          "number": "4.1.2",
+          "title": "Partie à bons de commande",
+          "level": 3,
+          "page_start": 6,
+          "page_end": 7
+        },
+        {
+          "number": "4.2",
+          "title": "Mode d'établissement des prix",
+          "level": 2,
+          "page_start": 7,
+          "page_end": 7
+        },
+        {
+          "number": "4.3",
+          "title": "Révision des prix",
+          "level": 2,
+          "page_start": 7,
+          "page_end": 7
+        },
+        {
+          "number": "4.2.3",
+          "title": "Clause butoir",
+          "level": 3,
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "number": "4.2.4",
+          "title": "Clause de sauvegarde",
+          "level": 3,
+          "page_start": 8,
+          "page_end": 8
+        },
+        {
+          "number": "4.2.5",
+          "title": "Clause de réexamen",
+          "level": 3,
+          "page_start": 8,
+          "page_end": 9
+        },
+        {
+          "number": "4.2.6",
+          "title": "Contenu des prix",
+          "level": 3,
+          "page_start": 9,
+          "page_end": 9
+        },
+        {
+          "number": "4.3",
+          "title": "Avance",
+          "level": 2,
+          "page_start": 10,
+          "page_end": 10
+        },
+        {
+          "number": "4.4",
+          "title": "Facturation",
+          "level": 2,
+          "page_start": 10,
+          "page_end": 10
+        },
+        {
+          "number": "4.4.1",
+          "title": "Paiement",
+          "level": 3,
+          "page_start": 10,
+          "page_end": 11
+        },
+        {
+          "number": "4.4.2",
+          "title": "Processus de facturation",
+          "level": 3,
+          "page_start": 11,
+          "page_end": 11
+        },
+        {
+          "number": "4.4.3",
+          "title": "Support et adresse de facturation",
+          "level": 3,
+          "page_start": 11,
+          "page_end": 11
+        },
+        {
+          "number": "4.4.4",
+          "title": "Eléments de facturation",
+          "level": 3,
+          "page_start": 12,
+          "page_end": 12
+        },
+        {
+          "number": "5",
+          "title": "CONDITIONS D'EXECUTION ET OBLIGATIONS DES PARTIES",
+          "level": 1,
+          "page_start": 12,
+          "page_end": 12
+        },
+        {
+          "number": "5.1",
+          "title": "Obligations du titulaire",
+          "level": 2,
+          "page_start": 12,
+          "page_end": 12
+        },
+        {
+          "number": "5.1.1",
+          "title": "Généralités",
+          "level": 3,
+          "page_start": 12,
+          "page_end": 13
+        },
+        {
+          "number": "5.1.2",
+          "title": "Distributeurs et approvisionnement en consommables",
+          "level": 3,
+          "page_start": 13,
+          "page_end": 14
+        },
+        {
+          "number": "5.1.3",
+          "title": "Gestion des déchets",
+          "level": 3,
+          "page_start": 14,
+          "page_end": 15
+        },
+        {
+          "number": "5.2",
+          "title": "Reprise de personnel",
+          "level": 2,
+          "page_start": 15,
+          "page_end": 15
+        },
+        {
+          "number": "6",
+          "title": "EXECUTION DE L'ACCORD-CADRE",
+          "level": 1,
+          "page_start": 15,
+          "page_end": 15
+        },
+        {
+          "number": "6.1",
+          "title": "Interlocuteurs de l'accord-cadre et encadrement",
+          "level": 2,
+          "page_start": 15,
+          "page_end": 15
+        },
+        {
+          "number": "6.2",
+          "title": "Plan de prévention et de sécurité",
+          "level": 2,
+          "page_start": 15,
+          "page_end": 16
+        },
+        {
+          "number": "6.3",
+          "title": "Effectifs d'entretien",
+          "level": 2,
+          "page_start": 16,
+          "page_end": 16
+        },
+        {
+          "number": "6.4",
+          "title": "Formation du personnel",
+          "level": 2,
+          "page_start": 17,
+          "page_end": 17
+        },
+        {
+          "number": "6.5",
+          "title": "Tenue du personnel du titulaire",
+          "level": 2,
+          "page_start": 17,
+          "page_end": 17
+        },
+        {
+          "number": "6.6",
+          "title": "Accès aux locaux",
+          "level": 2,
+          "page_start": 17,
+          "page_end": 17
+        },
+        {
+          "number": "6.7",
+          "title": "Eléments mis à disposition du titulaire",
+          "level": 2,
+          "page_start": 17,
+          "page_end": 17
+        },
+        {
+          "number": "6.7.1",
+          "title": "Energie électrique et eaux",
+          "level": 3,
+          "page_start": 17,
+          "page_end": 18
+        },
+        {
+          "number": "6.7.2",
+          "title": "Locaux de rangement",
+          "level": 3,
+          "page_start": 19,
+          "page_end": 19
+        },
+        {
+          "number": "6.7.3",
+          "title": "Utilisation interdite des matériels et équipements de la collectivité",
+          "level": 3,
+          "page_start": 19,
+          "page_end": 19
+        },
+        {
+          "number": "6.8",
+          "title": "Produits et matériels utilisés par le titulaire",
+          "level": 2,
+          "page_start": 19,
+          "page_end": 19
+        },
+        {
+          "number": "6.9",
+          "title": "Obligation de transmission des plannings d'intervention",
+          "level": 2,
+          "page_start": 20,
+          "page_end": 20
+        },
+        {
+          "number": "6.10",
+          "title": "Obligation de traçabilité à la charge du titulaire",
+          "level": 2,
+          "page_start": 20,
+          "page_end": 20
+        },
+        {
+          "number": "6.11",
+          "title": "Contrôle interne à la charge du titulaire",
+          "level": 2,
+          "page_start": 20,
+          "page_end": 21
+        },
+        {
+          "number": "6.12",
+          "title": "Commission Entretien",
+          "level": 2,
+          "page_start": 21,
+          "page_end": 21
+        },
+        {
+          "number": "6.13",
+          "title": "Rapport annuel du titulaire",
+          "level": 2,
+          "page_start": 21,
+          "page_end": 21
+        },
+        {
+          "number": "6.14",
+          "title": "Obligation générale d'information du titulaire",
+          "level": 2,
+          "page_start": 21,
+          "page_end": 22
+        },
+        {
+          "number": "7",
+          "title": "ASPECT SOCIAL ET ENVIRONNEMENTAL",
+          "level": 1,
+          "page_start": 22,
+          "page_end": 22
+        },
+        {
+          "number": "7.1",
+          "title": "Clause sociale d'insertion",
+          "level": 2,
+          "page_start": 22,
+          "page_end": 22
+        },
+        {
+          "number": "7.1.1",
+          "title": "L'engagement de l'entreprise attributaire / Le volume d'insertion à réaliser",
+          "level": 3,
+          "page_start": 22,
+          "page_end": 22
+        },
+        {
+          "number": "7.1.2",
+          "title": "Les publics éligibles à la clause sociale d'insertion",
+          "level": 3,
+          "page_start": 22,
+          "page_end": 22
+        },
+        {
+          "number": "7.1.2.1",
+          "title": "Personnes recrutées et accompagnées dans une structure reconnue",
+          "level": 4,
+          "page_start": 23,
+          "page_end": 23
+        },
+        {
+          "number": "7.1.2.2",
+          "title": "Personnes répondant à des critères d'éloignement du marché du travail",
+          "level": 4,
+          "page_start": 23,
+          "page_end": 24
+        },
+        {
+          "number": "7.1.3",
+          "title": "Le dispositif d'accompagnement pour la mise en œuvre des clauses d'insertion",
+          "level": 3,
+          "page_start": 24,
+          "page_end": 24
+        },
+        {
+          "number": "7.1.4",
+          "title": "Modalités de réalisation de la clause sociale d'insertion",
+          "level": 3,
+          "page_start": 24,
+          "page_end": 25
+        },
+        {
+          "number": "7.1.5",
+          "title": "Le contrôle de l'action d'insertion",
+          "level": 3,
+          "page_start": 25,
+          "page_end": 25
+        },
+        {
+          "number": "7.1.6",
+          "title": "Globalisation des heures d'insertion",
+          "level": 3,
+          "page_start": 25,
+          "page_end": 26
+        },
+        {
+          "number": "7.1.7",
+          "title": "Sous-traitance",
+          "level": 3,
+          "page_start": 26,
+          "page_end": 26
+        },
+        {
+          "number": "7.1.8",
+          "title": "Comptabilisation des heures d'insertion, de formation, et durée d'éligibilité des",
+          "level": 3,
+          "page_start": 26,
+          "page_end": 27
+        },
+        {
+          "number": "7.1.9",
+          "title": "Respect de la réglementation RGPD",
+          "level": 3,
+          "page_start": 27,
+          "page_end": 28
+        },
+        {
+          "number": "7.1.10",
+          "title": "Difficultés éventuelles de réalisation",
+          "level": 3,
+          "page_start": 28,
+          "page_end": 28
+        },
+        {
+          "number": "7.1.11",
+          "title": "Pénalités",
+          "level": 3,
+          "page_start": 28,
+          "page_end": 28
+        },
+        {
+          "number": "7.2",
+          "title": "Engagements environnementaux du titulaire",
+          "level": 2,
+          "page_start": 28,
+          "page_end": 28
+        },
+        {
+          "number": "7.2.1",
+          "title": "Enjeux environnementaux",
+          "level": 3,
+          "page_start": 28,
+          "page_end": 29
+        },
+        {
+          "number": "7.2.2",
+          "title": "Engagements environnementaux spécifiques aux prestations du marché",
+          "level": 3,
+          "page_start": 29,
+          "page_end": 29
+        },
+        {
+          "number": "7.2.3",
+          "title": "Engagements environnementaux spécifiques aux produits et consommables",
+          "level": 3,
+          "page_start": 29,
+          "page_end": 30
+        },
+        {
+          "number": "7.2.4",
+          "title": "Objectifs environnementaux spécifiques aux déplacements du personnel",
+          "level": 3,
+          "page_start": 31,
+          "page_end": 31
+        },
+        {
+          "number": "8",
+          "title": "CONTRÔLES",
+          "level": 1,
+          "page_start": 31,
+          "page_end": 31
+        },
+        {
+          "number": "8.1",
+          "title": "Contrôle interne du prestataire",
+          "level": 2,
+          "page_start": 31,
+          "page_end": 32
+        },
+        {
+          "number": "8.2",
+          "title": "Contrôles contradictoires",
+          "level": 2,
+          "page_start": 32,
+          "page_end": 32
+        },
+        {
+          "number": "8.3",
+          "title": "Contrôles à l'initiative de la commune",
+          "level": 2,
+          "page_start": 32,
+          "page_end": 32
+        },
+        {
+          "number": "8.4",
+          "title": "Reprise des désordres à la suite d'un défaut de qualité",
+          "level": 2,
+          "page_start": 32,
+          "page_end": 32
+        },
+        {
+          "number": "8.5",
+          "title": "Reprise des désordres suite à une absence de réalisation des prestations planifiées au",
+          "level": 2,
+          "page_start": 32,
+          "page_end": 33
+        },
+        {
+          "number": "9",
+          "title": "RECOURS A LA SOUS-TRAITANCE",
+          "level": 1,
+          "page_start": 33,
+          "page_end": 33
+        },
+        {
+          "number": "10",
+          "title": "PENALITES",
+          "level": 1,
+          "page_start": 33,
+          "page_end": 35
+        },
+        {
+          "number": "11",
+          "title": "CONFIDENTIALITE",
+          "level": 1,
+          "page_start": 35,
+          "page_end": 35
+        },
+        {
+          "number": "12",
+          "title": "RESPONSABILITE",
+          "level": 1,
+          "page_start": 35,
+          "page_end": 35
+        },
+        {
+          "number": "13",
+          "title": "OPERATIONS DE VERIFICATION",
+          "level": 1,
+          "page_start": 35,
+          "page_end": 35
+        },
+        {
+          "number": "13.1",
+          "title": "Opérations de vérifications",
+          "level": 2,
+          "page_start": 35,
+          "page_end": 35
+        },
+        {
+          "number": "13.2",
+          "title": "Admission",
+          "level": 2,
+          "page_start": 35,
+          "page_end": 35
+        },
+        {
+          "number": "13.3",
+          "title": "Contrôle et qualité des prestations",
+          "level": 2,
+          "page_start": 35,
+          "page_end": 36
+        },
+        {
+          "number": "14",
+          "title": "RÉSILIATION DE L'ACCORD-CADRE",
+          "level": 1,
+          "page_start": 36,
+          "page_end": 36
+        },
+        {
+          "number": "15",
+          "title": "LITIGES ET COMPÉTENCES DES TRIBUNAUX",
+          "level": 1,
+          "page_start": 36,
+          "page_end": 38
+        },
+        {
+          "number": "16",
+          "title": "NANTISSEMENT ET CESSION DE CREANCES",
+          "level": 1,
+          "page_start": 38,
+          "page_end": 38
+        },
+        {
+          "number": "17",
+          "title": "TRANSFERT D'ACTIVITE",
+          "level": 1,
+          "page_start": 38,
+          "page_end": 38
+        },
+        {
+          "number": "18",
+          "title": "PROTECTION DES DONNEES PERSONNELLES",
+          "level": 1,
+          "page_start": 38,
+          "page_end": 40
+        },
+        {
+          "number": "19",
+          "title": "DEROGATIONS",
+          "level": 1,
+          "page_start": 40,
+          "page_end": 40
+        }
+      ],
+      "paragraphs": 336,
+      "sentences": 674,
+      "boilerplate_removed": [
+        "lot n°# nettoyage et entretien des locaux - cahier des clauses particulières - ccp",
+        "page # sur #"
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 2,
+      "article": "1.1",
+      "concepts": [
+        "PURCHASE_ORDER",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 2,
+      "article": "1.2",
+      "concepts": [
+        "PURCHASE_ORDER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 2,
+      "article": "1.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "PRICE",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 3,
+      "article": "1.5",
+      "concepts": [
+        "ACTION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 3,
+      "article": "1.5",
+      "concepts": [
+        "PURCHASE_ORDER",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 3,
+      "article": "1.6",
+      "concepts": [
+        "ACTION",
+        "PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 4,
+      "article": "2",
+      "concepts": [
+        "ACTION",
+        "PURCHASE_ORDER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 4,
+      "article": "2.1",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PAYMENT",
+        "PRICE",
+        "PURCHASE_ORDER",
+        "REQUEST",
+        "SUPPLIER",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 5,
+      "article": "2.2",
+      "concepts": [
+        "ACTION",
+        "INVOICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 5,
+      "article": "3.1",
+      "concepts": [
+        "PURCHASE_ORDER",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 5,
+      "article": "3.2.2",
+      "concepts": [
+        "PURCHASE_ORDER",
+        "T:PRICE",
+        "T:PURCHASE_ORDER",
+        "T:VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 5,
+      "article": "3.2.2",
+      "concepts": [
+        "ACTION",
+        "PURCHASE_ORDER",
+        "SUPPLIER",
+        "T:PRICE",
+        "T:PURCHASE_ORDER",
+        "T:VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "OBLIGATION",
+        "PRICE",
+        "SUPPLIER",
+        "T:PAYMENT",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "PRICE",
+        "SUPPLIER",
+        "T:PAYMENT",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1",
+      "concepts": [
+        "OBLIGATION",
+        "PRICE",
+        "SUPPLIER",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1",
+      "concepts": [
+        "PRICE",
+        "PURCHASE_ORDER",
+        "SUPPLIER",
+        "T:PRICE",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PRICE",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1",
+      "concepts": [
+        "CAP",
+        "MONEY",
+        "PRICE",
+        "PURCHASE_ORDER",
+        "SUPPLIER",
+        "T:PRICE",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1.1",
+      "concepts": [
+        "PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1.1",
+      "concepts": [
+        "CHANGE",
+        "DURATION",
+        "MECHANISM",
+        "PRICE"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1.2",
+      "concepts": [
+        "PRICE",
+        "T:PURCHASE_ORDER",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 6,
+      "article": "4.1.2",
+      "concepts": [
+        "CHANGE",
+        "DURATION",
+        "MECHANISM",
+        "PRICE",
+        "T:PURCHASE_ORDER"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.1.2",
+      "concepts": [
+        "PRICE",
+        "PURCHASE_ORDER",
+        "T:PURCHASE_ORDER",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.2",
+      "concepts": [
+        "ACTION",
+        "PRICE",
+        "T:ACTION",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "PRICE",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "MECHANISM",
+        "PRICE",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "FORMULA",
+        "INDEX",
+        "PRICE",
+        "REQUEST",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "INVOICE",
+        "MECHANISM",
+        "PRICE",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "OBLIGATION",
+        "PAYMENT",
+        "PRICE",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "CHANGE",
+        "PRICE",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "DURATION",
+        "INACTION_COND",
+        "MECHANISM",
+        "OBLIGATION",
+        "OUT_DEEMED_ACCEPTED",
+        "OUT_PRICE_KEPT",
+        "PRICE",
+        "REQUEST",
+        "SUPPLIER",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": [
+        "PRICE_CHANGE",
+        "CONSEQUENCE",
+        "TACIT_ACCEPTANCE",
+        "ECONOMIC_OBLIGATION_WITH_DEADLINE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 7,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "INDEX",
+        "MECHANISM",
+        "OBLIGATION",
+        "PRICE",
+        "REQUEST",
+        "SUPPLIER",
+        "T:CHANGE",
+        "T:MECHANISM",
+        "T:PRICE"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.3",
+      "concepts": [
+        "CAP",
+        "CHANGE",
+        "DURATION",
+        "MECHANISM",
+        "PCT",
+        "PRICE",
+        "T:CAP"
+      ],
+      "strong": [
+        "PRICE_CHANGE",
+        "PRICE_LIMIT"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.3",
+      "concepts": [
+        "CAP",
+        "CHANGE",
+        "MECHANISM",
+        "OBLIGATION",
+        "PCT",
+        "PRICE",
+        "SUPPLIER",
+        "T:CAP"
+      ],
+      "strong": [
+        "PRICE_CHANGE",
+        "PRICE_LIMIT"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.4",
+      "concepts": [
+        "ACTION",
+        "CAP",
+        "DURATION",
+        "PRICE",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "PURCHASE_ORDER",
+        "REEXAM",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "REEXAM",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "REQUEST",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "INDEX",
+        "INVOICE",
+        "MECHANISM",
+        "PRICE",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": [
+        "PRICE_CHANGE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "DURATION",
+        "REQUEST",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "PCT",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "PCT",
+        "PRICE",
+        "PURCHASE_ORDER",
+        "REEXAM",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 8,
+      "article": "4.2.5",
+      "concepts": [
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "PCT",
+        "PRICE",
+        "PURCHASE_ORDER",
+        "REEXAM",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "CAP",
+        "CHANGE",
+        "PURCHASE_ORDER",
+        "REEXAM",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "REQUEST",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "PURCHASE_ORDER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.5",
+      "concepts": [
+        "CHANGE",
+        "OBLIGATION",
+        "REEXAM",
+        "SUPPLIER",
+        "T:REEXAM"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 9,
+      "article": "4.2.6",
+      "concepts": [
+        "ACTION",
+        "OBLIGATION",
+        "PRICE",
+        "SUPPLIER",
+        "T:PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.3",
+      "concepts": [
+        "ADVANCE",
+        "OUT_RIGHT_LOST",
+        "PAYMENT",
+        "PURCHASE_ORDER",
+        "SUPPLIER",
+        "T:ADVANCE"
+      ],
+      "strong": [
+        "RIGHT_LIMITATION"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.3",
+      "concepts": [
+        "ADVANCE",
+        "CHANGE",
+        "DURATION",
+        "MECHANISM",
+        "PAYMENT",
+        "SUPPLIER",
+        "T:ADVANCE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.3",
+      "concepts": [
+        "ADVANCE",
+        "MONEY",
+        "PAYMENT",
+        "PCT",
+        "PURCHASE_ORDER",
+        "T:ADVANCE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.3",
+      "concepts": [
+        "ADVANCE",
+        "FINAL_BALANCE",
+        "OBLIGATION",
+        "PAYMENT",
+        "PCT",
+        "PRICE",
+        "PURCHASE_ORDER",
+        "SUPPLIER",
+        "T:ADVANCE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.3",
+      "concepts": [
+        "ACTION",
+        "ADVANCE",
+        "CONDITION_ON",
+        "PAYMENT",
+        "PURCHASE_ORDER",
+        "REQUEST",
+        "STRICT_CONDITION",
+        "SUPPLIER",
+        "T:ADVANCE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.4.1",
+      "concepts": [
+        "PAYMENT",
+        "SUPPLIER",
+        "T:PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.4.1",
+      "concepts": [
+        "PAYMENT",
+        "T:PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.4.1",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "DURATION",
+        "LATE_INTEREST",
+        "OBLIGATION",
+        "PAYMENT",
+        "PURCHASE_ORDER",
+        "REQUEST",
+        "SUPPLIER",
+        "T:PAYMENT"
+      ],
+      "strong": [
+        "ECONOMIC_OBLIGATION_WITH_DEADLINE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 10,
+      "article": "4.4.1",
+      "concepts": [
+        "INACTION_COND",
+        "LATE_INTEREST",
+        "SUPPLIER",
+        "T:PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "PRICE",
+        "T:PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PAYMENT",
+        "PRICE",
+        "T:PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "ACTION",
+        "CONDITION_ON",
+        "INVOICE",
+        "PAYMENT",
+        "SUPPLIER",
+        "T:PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "ACTION",
+        "CONDITION_ON",
+        "INVOICE",
+        "STRICT_CONDITION",
+        "SUPPLIER",
+        "T:PAYMENT"
+      ],
+      "strong": [
+        "BILLING_CONDITION"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "PRICE",
+        "T:PAYMENT",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "ACTION",
+        "CONDITION_ON",
+        "INVOICE",
+        "PAYMENT",
+        "PRICE",
+        "SUPPLIER",
+        "T:PAYMENT",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.1",
+      "concepts": [
+        "ACTION",
+        "CONDITION_ON",
+        "INVOICE",
+        "STRICT_CONDITION",
+        "SUPPLIER",
+        "T:PAYMENT"
+      ],
+      "strong": [
+        "BILLING_CONDITION"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.2",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PAYMENT",
+        "PENALTY",
+        "SUPPLIER",
+        "T:ACTION",
+        "T:INVOICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.2",
+      "concepts": [
+        "ACTION",
+        "ADVANCE",
+        "CHANGE",
+        "DURATION",
+        "INACTION_COND",
+        "INVOICE",
+        "OUT_DEEMED_ACCEPTED",
+        "PENALTY",
+        "SUPPLIER",
+        "T:ACTION",
+        "T:INVOICE"
+      ],
+      "strong": [
+        "CONSEQUENCE",
+        "TACIT_ACCEPTANCE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.2",
+      "concepts": [
+        "ACTION",
+        "PENALTY",
+        "PRICE",
+        "PURCHASE_ORDER",
+        "T:ACTION",
+        "T:INVOICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 11,
+      "article": "4.4.3",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "T:ACTION",
+        "T:INVOICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 12,
+      "article": "4.4.4",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "T:ACTION",
+        "T:INVOICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 12,
+      "article": "4.4.4",
+      "concepts": [
+        "ACTION",
+        "PURCHASE_ORDER",
+        "T:ACTION",
+        "T:INVOICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 13,
+      "article": "5.1.1",
+      "concepts": [
+        "PURCHASE_ORDER",
+        "VARIABLE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 13,
+      "article": "5.1.2",
+      "concepts": [
+        "PRICE"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 14,
+      "article": "5.1.2",
+      "concepts": [
+        "PRICE",
+        "PURCHASE_ORDER",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 15,
+      "article": "5.1.3",
+      "concepts": [
+        "PENALTY",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 15,
+      "article": "5.1.3",
+      "concepts": [
+        "PRICE",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 16,
+      "article": "6.3",
+      "concepts": [
+        "OBLIGATION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 17,
+      "article": "6.5",
+      "concepts": [
+        "OBLIGATION",
+        "PAYMENT",
+        "SUPPLIER",
+        "T:SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 17,
+      "article": "6.6",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PRICE",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 20,
+      "article": "6.9",
+      "concepts": [
+        "OBLIGATION",
+        "PENALTY",
+        "SUPPLIER",
+        "T:ACTION"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 22,
+      "article": "7.1.1",
+      "concepts": [
+        "INACTION_COND",
+        "OBLIGATION",
+        "PAYMENT",
+        "SUPPLIER",
+        "T:SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 25,
+      "article": "7.1.5",
+      "concepts": [
+        "ACTION",
+        "DURATION",
+        "INVOICE",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 26,
+      "article": "7.1.6",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "REQUEST"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 27,
+      "article": "7.1.9",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "DATE",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 28,
+      "article": "7.1.10",
+      "concepts": [
+        "ACTION",
+        "CONDITION_ON",
+        "INDEX",
+        "OBLIGATION",
+        "REQUEST",
+        "STRICT_CONDITION",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 28,
+      "article": "7.1.11",
+      "concepts": [
+        "INACTION_COND",
+        "PENALTY",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 28,
+      "article": "7.2.1",
+      "concepts": [
+        "ACTION",
+        "CHANGE",
+        "DATE",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 29,
+      "article": "7.2.1",
+      "concepts": [
+        "PENALTY",
+        "REQUEST",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 30,
+      "article": "7.2.3",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PCT",
+        "REQUEST",
+        "SUPPLIER",
+        "T:ACTION",
+        "THRESHOLD"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 32,
+      "article": "8.2",
+      "concepts": [
+        "ADVANCE",
+        "DURATION"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 32,
+      "article": "8.5",
+      "concepts": [
+        "PURCHASE_ORDER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 32,
+      "article": "8.5",
+      "concepts": [
+        "ACTION",
+        "DURATION",
+        "OBLIGATION",
+        "PURCHASE_ORDER",
+        "SUPPLIER"
+      ],
+      "strong": [
+        "ECONOMIC_OBLIGATION_WITH_DEADLINE"
+      ]
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "9",
+      "concepts": [
+        "MONEY",
+        "OBLIGATION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "9",
+      "concepts": [
+        "OBLIGATION",
+        "PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "10",
+      "concepts": [
+        "ACTION",
+        "SUPPLIER",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "10",
+      "concepts": [
+        "ACTION",
+        "INVOICE",
+        "PENALTY",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "10",
+      "concepts": [
+        "MONEY",
+        "PENALTY",
+        "SUPPLIER",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "10",
+      "concepts": [
+        "PENALTY",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 33,
+      "article": "10",
+      "concepts": [
+        "ACTION",
+        "MONEY",
+        "SUPPLIER",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 34,
+      "article": "10",
+      "concepts": [
+        "ACTION",
+        "DURATION",
+        "INACTION_COND",
+        "MONEY",
+        "PENALTY",
+        "REQUEST",
+        "SUPPLIER",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 34,
+      "article": "10",
+      "concepts": [
+        "ACTION",
+        "INACTION_COND",
+        "MONEY",
+        "PENALTY",
+        "REQUEST",
+        "SUPPLIER",
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 35,
+      "article": "10",
+      "concepts": [
+        "T:PENALTY"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 36,
+      "article": "15",
+      "concepts": [
+        "PAYMENT"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 38,
+      "article": "16",
+      "concepts": [
+        "PURCHASE_ORDER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 38,
+      "article": "18",
+      "concepts": [
+        "DATE",
+        "OBLIGATION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 38,
+      "article": "18",
+      "concepts": [
+        "ACTION",
+        "OBLIGATION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 39,
+      "article": "18",
+      "concepts": [
+        "ACTION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 39,
+      "article": "18",
+      "concepts": [
+        "ACTION",
+        "PAYMENT",
+        "REQUEST",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 39,
+      "article": "18",
+      "concepts": [
+        "ACTION",
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    },
+    {
+      "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+      "page": 40,
+      "article": "18",
+      "concepts": [
+        "PAYMENT",
+        "SUPPLIER"
+      ],
+      "strong": []
+    }
+  ]
+}

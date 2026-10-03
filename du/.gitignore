@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+data/uploads/*
+!data/uploads/.gitkeep
+data/results/*
+!data/results/.gitkeep
+!data/results/real_001_before_fix.json
+!data/results/real_001_before_fix.md
+!data/results/real_001_v1_regression.json
+!data/results/real_001_v1_regression.md
+!data/results/v1_adversarial_first_run.txt

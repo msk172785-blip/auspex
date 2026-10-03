@@ -1,0 +1,791 @@
+{
+  "contract_key": "real_001",
+  "documents": [
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf"
+  ],
+  "fields": {
+    "contract_id": {
+      "name": "contract_id",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "buyer": {
+      "name": "buyer",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "supplier": {
+      "name": "supplier",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Le titulaire n'est généralement pas nommé dans le CCAP : à saisir."
+      ]
+    },
+    "contract_title": {
+      "name": "contract_title",
+      "value": "les prestations de nettoyage et d'entretien des locaux - lot n°1",
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "article": "1",
+          "quote": "1.1 - Objet et conditions juridiques de l'accord-cadre Le présent accord-cadre a pour objet les prestations de nettoyage et d'entretien des locaux - lot n°1.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "contract_start_date": {
+      "name": "contract_start_date",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 3,
+          "article": "1",
+          "quote": "La décision d'affermissement des dix-huit (18) tranches optionnelles sera effectuée, le cas échéant, dans un délai maximum de 48 mois à compter de la notification de l'ordre de service de commencement des prestations issues de la tranche ferme.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.0,
+      "status": "REVIEW_REQUIRED",
+      "missing_information": [
+        "date_notification"
+      ],
+      "notes": [
+        "Le contrat court à compter de sa notification ; la date de notification n'est pas dans le document."
+      ]
+    },
+    "contract_end_date": {
+      "name": "contract_end_date",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Calculée uniquement si début et durée sont connus."
+      ]
+    },
+    "annual_amount": {
+      "name": "annual_amount",
+      "value": 12000.0,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 6,
+          "article": "4",
+          "quote": "Accord-cadre mono-attributaire à bons de commande, en application des articles R.2162-2, R.2162-4, R.2162-13 et R.2162-14 et ce, sans mention de minimum, et pour un montant annuel maximum de commandes arrêté à 12 000 € HT.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": [
+        "Montant HT"
+      ]
+    },
+    "contract_duration": {
+      "name": "contract_duration",
+      "value": {
+        "initial_months": 12
+      },
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 5,
+          "article": "3",
+          "quote": "3.1 - Durée de l'accord-cadre Le présent accord-cadre est conclu pour une période initiale d'un (1) an à compter du 16 décembre 2026 ou à compter de sa notification au titulaire si celle-ci a lieu à une date ultérieure.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "price_type": {
+      "name": "price_type",
+      "value": "FERME / REVISABLE",
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "4.3 - Révision des prix Les prix du marché seront fermes la première année d'exécution.",
+          "quote_verified": true
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 6,
+          "article": "4.1.1",
+          "quote": "Le prix est ferme pendant un an à compter de la date d'effet de l'accord-cadre.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.5,
+      "status": "REVIEW_REQUIRED",
+      "missing_information": [],
+      "notes": [
+        "Mentions contradictoires du type de prix (ex. prix fermes la 1re année puis révisables)."
+      ]
+    },
+    "revision_exists": {
+      "name": "revision_exists",
+      "value": true,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "4.3 - Révision des prix Les prix du marché seront fermes la première année d'exécution.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.55,
+      "status": "REVIEW_REQUIRED",
+      "missing_information": [],
+      "notes": [
+        "Le document mentionne aussi des prix fermes : vérifier la période d'application."
+      ]
+    },
+    "revision_type": {
+      "name": "revision_type",
+      "value": "FORMULE_A_VERIFIER",
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "Les prix du marché seront révisés par application de la formule suivante : P=P0 (BtoB / BtoB0) − P : Prix révisé − Po : Prix initial − BtoB : Indices des prix de production des services français aux entreprises françaises (BtoB) - CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, dernier indice connu à la date de la demande de révision des conditions financières − BtoB0 : Indices des prix de production des services français aux entreprises […]",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.65,
+      "status": "REVIEW_REQUIRED",
+      "missing_information": [],
+      "notes": []
+    },
+    "revision_formula": {
+      "name": "revision_formula",
+      "value": "P=P0 (BtoB / BtoB0)",
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "Les prix du marché seront révisés par application de la formule suivante : P=P0 (BtoB / BtoB0) − P : Prix révisé − Po : Prix initial − BtoB : Indices des prix de production des services français aux entreprises françaises (BtoB) - CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, dernier indice connu à la date de la demande de révision des conditions financières − BtoB0 : Indices des prix de production des services français aux entreprises […]",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.65,
+      "status": "REVIEW_REQUIRED",
+      "missing_information": [],
+      "notes": [
+        "Formule non reconnue comme paramétrique à un indice : vérification humaine requise."
+      ]
+    },
+    "revision_index": {
+      "name": "revision_index",
+      "value": {
+        "names": [],
+        "identifiers": [
+          "010766785"
+        ]
+      },
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "Les prix du marché seront révisés par application de la formule suivante : P=P0 (BtoB / BtoB0) − P : Prix révisé − Po : Prix initial − BtoB : Indices des prix de production des services français aux entreprises françaises (BtoB) - CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, dernier indice connu à la date de la demande de révision des conditions financières − BtoB0 : Indices des prix de production des services français aux entreprises […]",
+          "quote_verified": true
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "- CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, indice applicable au mois d'établissement des prix.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "base_index": {
+      "name": "base_index",
+      "value": "4.2 - Mode d'établissement des prix Les prix sont tous réputés établis aux conditions économiques du mois de remise des offres, ce mois est appelé « mois zéro ».",
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "4.2 - Mode d'établissement des prix Les prix sont tous réputés établis aux conditions économiques du mois de remise des offres, ce mois est appelé « mois zéro ».",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.75,
+      "status": "REVIEW_REQUIRED",
+      "missing_information": [],
+      "notes": []
+    },
+    "revision_frequency": {
+      "name": "revision_frequency",
+      "value": "TRIMESTRIELLE",
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 14,
+          "article": "5.1.3",
+          "quote": "Le titulaire assurera également le nettoyage des conteneurs sur les structures précédemment listées, une fois par trimestre.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "revision_trigger": {
+      "name": "revision_trigger",
+      "value": [
+        "AUTOMATIQUE"
+      ],
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "En cas de non-respect de ce délai, les prix de l'année en cours seront d'office reconduits pour une nouvelle période d'un an.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "supplier_action_required": {
+      "name": "supplier_action_required",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "supplier_action_description": {
+      "name": "supplier_action_description",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "deadline_rule": {
+      "name": "deadline_rule",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "calculated_deadline": {
+      "name": "calculated_deadline",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Calculée par le module de calcul."
+      ]
+    },
+    "forfeiture_exists": {
+      "name": "forfeiture_exists",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "forfeiture_consequence": {
+      "name": "forfeiture_consequence",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "cap_exists": {
+      "name": "cap_exists",
+      "value": true,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.3",
+          "quote": "La variation des prix du marché est plafonnée à une augmentation maximale annuelle de 3% par rapport aux prix de l'année précédente.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "cap_value": {
+      "name": "cap_value",
+      "value": 3.0,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.3",
+          "quote": "La variation des prix du marché est plafonnée à une augmentation maximale annuelle de 3% par rapport aux prix de l'année précédente.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "threshold_exists": {
+      "name": "threshold_exists",
+      "value": true,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.3",
+          "quote": "conduirait à une variation annuelle des prix unitaires de base supérieure à 3 %, le titulaire sera tenu d'exécuter les prestations de l'accord-cadre au prix plafonné.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "threshold_value": {
+      "name": "threshold_value",
+      "value": {
+        "pct": 3.0,
+        "kind": "DECLENCHEMENT"
+      },
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.3",
+          "quote": "conduirait à une variation annuelle des prix unitaires de base supérieure à 3 %, le titulaire sera tenu d'exécuter les prestations de l'accord-cadre au prix plafonné.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "purchase_orders_exist": {
+      "name": "purchase_orders_exist",
+      "value": true,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "article": "1",
+          "quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "variable_services_exist": {
+      "name": "variable_services_exist",
+      "value": true,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "article": "1",
+          "quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "amendments_exist": {
+      "name": "amendments_exist",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucun avenant fourni. Une simple mention de la possibilité d'avenant dans le CCAP n'est pas un avenant."
+      ]
+    },
+    "retention_exists": {
+      "name": "retention_exists",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "retention_rate": {
+      "name": "retention_rate",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "retention_release_rule": {
+      "name": "retention_release_rule",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "payment_terms": {
+      "name": "payment_terms",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "late_payment_interest": {
+      "name": "late_payment_interest",
+      "value": true,
+      "kind": "FACT",
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "article": "4.4.1",
+          "quote": "2192-31 du même code, le dépassement du délai de paiement ouvre de plein droit et sans autre formalité pour le titulaire du marché, à compter du jour d'expiration du délai, au bénéfice d'intérêts moratoires.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "missing_information": [],
+      "notes": []
+    },
+    "advance_payment": {
+      "name": "advance_payment",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "guarantee_period_months": {
+      "name": "guarantee_period_months",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    },
+    "final_balance_rule": {
+      "name": "final_balance_rule",
+      "value": null,
+      "kind": "MISSING",
+      "evidence": [],
+      "confidence": 0.0,
+      "status": "NOT_FOUND",
+      "missing_information": [],
+      "notes": [
+        "Aucune mention trouvée (absence de preuve ≠ preuve d'absence)."
+      ]
+    }
+  },
+  "events": [
+    {
+      "financial_event_type": "PRICE_REVISION",
+      "severity": "medium",
+      "title": "Révision de prix prévue au contrat",
+      "contractual_fact": {
+        "revision_exists": true,
+        "price_type": "FERME / REVISABLE",
+        "revision_formula": "P=P0 (BtoB / BtoB0)",
+        "revision_index": {
+          "names": [],
+          "identifiers": [
+            "010766785"
+          ]
+        },
+        "revision_frequency": "TRIMESTRIELLE"
+      },
+      "financial_calculation": null,
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "4.3 - Révision des prix Les prix du marché seront fermes la première année d'exécution.",
+          "quote_verified": true
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "Les prix du marché seront révisés par application de la formule suivante : P=P0 (BtoB / BtoB0) − P : Prix révisé − Po : Prix initial − BtoB : Indices des prix de production des services français aux entreprises françaises (BtoB) - CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, dernier indice connu à la date de la demande de révision des conditions financières − BtoB0 : Indices des prix de production des services français aux entreprises […]",
+          "quote_verified": true
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 7,
+          "article": "4.1.2",
+          "quote": "- CPF 81.21 - Nettoyage courant, marché public - Prix de marché - Base 2021 - Identifiant Insee 010766785, indice applicable au mois d'établissement des prix.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.55,
+      "status": "REVIEW_REQUIRED",
+      "action": "Vérifier l'indice publié, calculer le coefficient et préparer la demande de révision.",
+      "missing_information": [
+        "formule de révision interprétable (ou coefficient saisi manuellement)",
+        "valeur de l'indice de base I0",
+        "valeur de l'indice de révision In"
+      ],
+      "assumptions": [],
+      "calculated_deadline": null,
+      "potential_amount": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "financial_event_type": "PRICE_REVISION_THRESHOLD",
+      "severity": "medium",
+      "title": "Seuil ou plafond conditionnant la révision",
+      "contractual_fact": {
+        "threshold": {
+          "pct": 3.0,
+          "kind": "DECLENCHEMENT"
+        },
+        "cap_pct": 3.0
+      },
+      "financial_calculation": null,
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.3",
+          "quote": "conduirait à une variation annuelle des prix unitaires de base supérieure à 3 %, le titulaire sera tenu d'exécuter les prestations de l'accord-cadre au prix plafonné.",
+          "quote_verified": true
+        },
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 8,
+          "article": "4.2.3",
+          "quote": "La variation des prix du marché est plafonnée à une augmentation maximale annuelle de 3% par rapport aux prix de l'année précédente.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "action": "Vérifier si la variation d'indice franchit le seuil avant de demander (ou si le plafond limite le gain).",
+      "missing_information": [],
+      "assumptions": [],
+      "calculated_deadline": null,
+      "potential_amount": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "financial_event_type": "PURCHASE_ORDER_BILLING",
+      "severity": "info",
+      "title": "Marché exécuté par bons de commande",
+      "contractual_fact": {
+        "purchase_orders_exist": true
+      },
+      "financial_calculation": null,
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "article": "1",
+          "quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.85,
+      "status": "AUTO_EXTRACTED",
+      "action": "Contrôler que chaque bon de commande exécuté a été facturé (fournir BC + factures pour le rapprochement).",
+      "missing_information": [
+        "liste des bons de commande"
+      ],
+      "assumptions": [],
+      "calculated_deadline": null,
+      "potential_amount": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "financial_event_type": "VARIABLE_SERVICE_BILLING",
+      "severity": "info",
+      "title": "Prestations variables / au bordereau de prix",
+      "contractual_fact": {
+        "variable_services_exist": true
+      },
+      "financial_calculation": null,
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 2,
+          "article": "1",
+          "quote": "Elles comprennent des prestations récurrentes et des prestations ponctuelles complémentaires qui feront l'objet de bons de commande spécifiques.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "action": "Vérifier que les quantités réellement exécutées sont toutes facturées.",
+      "missing_information": [],
+      "assumptions": [],
+      "calculated_deadline": null,
+      "potential_amount": null,
+      "SIMULATED_EXAMPLE": false
+    },
+    {
+      "financial_event_type": "OTHER_FINANCIAL_RIGHT",
+      "severity": "info",
+      "title": "Intérêts moratoires en cas de retard de paiement",
+      "contractual_fact": {
+        "late_payment_interest": true,
+        "payment_terms": null
+      },
+      "financial_calculation": null,
+      "evidence": [
+        {
+          "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+          "page": 10,
+          "article": "4.4.1",
+          "quote": "2192-31 du même code, le dépassement du délai de paiement ouvre de plein droit et sans autre formalité pour le titulaire du marché, à compter du jour d'expiration du délai, au bénéfice d'intérêts moratoires.",
+          "quote_verified": true
+        }
+      ],
+      "confidence": 0.8,
+      "status": "AUTO_EXTRACTED",
+      "action": "Vérifier les dates de paiement ; réclamer intérêts moratoires et indemnité forfaitaire si retard.",
+      "missing_information": [],
+      "assumptions": [],
+      "calculated_deadline": null,
+      "potential_amount": null,
+      "SIMULATED_EXAMPLE": false
+    }
+  ],
+  "user_inputs": {},
+  "warnings": [
+    "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf : Entrée = extraction texte fournie par l'utilisateur (PDF original non accessible)."
+  ],
+  "reference_date": "2026-10-03",
+  "SIMULATED_EXAMPLE": false,
+  "engine_version": "0.1.0",
+  "_run": {
+    "engine_rules_modified": false,
+    "input": "TEXT_EXTRACTION",
+    "pages_detected": 40,
+    "reference_date": "2026-10-03",
+    "user_inputs": {}
+  }
+}

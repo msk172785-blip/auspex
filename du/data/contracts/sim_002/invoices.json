@@ -1,0 +1,41 @@
+{
+  "SIMULATED_EXAMPLE": true,
+  "invoices": [
+    {
+      "invoice_id": "F-SIM-B-0201",
+      "date": "2026-02-15",
+      "lines": [
+        {
+          "item_code": "B-12",
+          "label": "Vitrerie m²",
+          "unit_price": 31.4,
+          "quantity": 300
+        }
+      ]
+    },
+    {
+      "invoice_id": "F-SIM-B-0331",
+      "date": "2026-03-31",
+      "lines": [
+        {
+          "item_code": "B-12",
+          "label": "Vitrerie m²",
+          "unit_price": 31.4,
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "invoice_id": "F-SIM-B-0430",
+      "date": "2026-04-30",
+      "lines": [
+        {
+          "item_code": "B-12",
+          "label": "Vitrerie m²",
+          "unit_price": 31.4,
+          "quantity": 600
+        }
+      ]
+    }
+  ]
+}

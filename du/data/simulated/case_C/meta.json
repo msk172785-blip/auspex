@@ -1,0 +1,9 @@
+{
+  "SIMULATED_EXAMPLE": true,
+  "reference_date": "2026-10-03",
+  "title": "CAS C — Bon de commande réalisé non facturé",
+  "user_inputs": {
+    "supplier": "Société Exemple Services (fictive)",
+    "contract_start_date": "2026-01-01"
+  }
+}

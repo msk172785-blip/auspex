@@ -1,0 +1,103 @@
+{
+  "contract_id": "real_001",
+  "validated": false,
+  "validated_by": "BROUILLON rédigé par l'assistant à partir du texte fourni — À RELIRE ET VALIDER PAR UN HUMAIN avant toute utilisation comme vérité terrain",
+  "SIMULATED_EXAMPLE": false,
+  "REAL_DOCUMENT": true,
+  "note": "Pages = pieds de page « Page N sur 40 » du texte fourni. Annexes non disponibles. Numérotation du document incohérente (deux articles 4.3).",
+  "fields": {
+    "revision_exists": true,
+    "revision_formula": "P=P0 (BtoB / BtoB0)",
+    "revision_index": [
+      "010766785"
+    ],
+    "deadline_rule": {
+      "amount": 2,
+      "unit": "months",
+      "direction": "before",
+      "reference": "anniversary"
+    },
+    "supplier_action_required": true,
+    "forfeiture_exists": true,
+    "threshold_exists": false,
+    "cap_pct_annual": 3.0,
+    "cap_pct_total": 9.0,
+    "revision_source_page": 7
+  },
+  "events": [
+    {
+      "type": "PRICE_REVISION",
+      "page": 7,
+      "article": "4.3",
+      "critical": true,
+      "critical_category": "nouveau prix dû"
+    },
+    {
+      "type": "PRICE_REVISION_DEADLINE",
+      "page": 7,
+      "article": "4.3",
+      "critical": true,
+      "critical_category": "échéance de révision",
+      "quote": "La demande de révision de prix devra parvenir deux mois avant la date de renouvellement du marché (soit la date « anniversaire ») par lettre recommandée avec accusé de réception."
+    },
+    {
+      "type": "PRICE_REVISION_FORFEITURE",
+      "page": 7,
+      "article": "4.3",
+      "critical": true,
+      "critical_category": "forclusion/perte d'un droit",
+      "quote": "En cas de non-respect de ce délai, les prix de l'année en cours seront d'office reconduits pour une nouvelle période d'un an."
+    },
+    {
+      "type": "PRICE_REVISION_THRESHOLD",
+      "page": 8,
+      "article": "4.2.3",
+      "critical": true,
+      "critical_category": "seuil/plafond de révision",
+      "kind": "CAP"
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 11,
+      "article": "4.4.2",
+      "critical": true,
+      "critical_category": "forclusion/perte d'un droit",
+      "label": "acceptation tacite du montant de facture rectifié après 30 jours",
+      "quote": "Passé un délai de trente jours à compter de cette notification, le titulaire est réputé, par son silence, avoir accepté ce montant."
+    },
+    {
+      "type": "PURCHASE_ORDER_BILLING",
+      "page": 6,
+      "article": "4.1",
+      "critical": true,
+      "critical_category": "prestation commandée potentiellement facturable"
+    },
+    {
+      "type": "VARIABLE_SERVICE_BILLING",
+      "page": 6,
+      "article": "4.1.2",
+      "critical": false
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 10,
+      "article": "4.4.1",
+      "critical": false,
+      "label": "intérêts moratoires (délai de paiement 30 jours)"
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 10,
+      "article": "4.3 (Avance)",
+      "critical": false,
+      "label": "avance 5 % des BC > 50 000 € HT"
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 8,
+      "article": "4.2.5",
+      "critical": false,
+      "label": "clause de réexamen (prise en charge 80 %)"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "SIMULATED_EXAMPLE": true,
+  "reference_date": "2026-10-03",
+  "title": "CAS B — Avenant non appliqué à la facturation",
+  "user_inputs": {
+    "supplier": "Société Exemple Vitrerie (fictive)",
+    "contract_start_date": "2025-09-01"
+  }
+}

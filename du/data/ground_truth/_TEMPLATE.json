@@ -1,0 +1,38 @@
+{
+  "contract_id": "contract_001",
+  "validated": false,
+  "validated_by": "NOM + date de la relecture humaine",
+  "SIMULATED_EXAMPLE": false,
+  "_instructions": "Copier en data/ground_truth/<contract_id>.json, remplir à la main depuis le PDF, puis passer validated à true. null = clause absente du contrat.",
+  "fields": {
+    "revision_exists": true,
+    "revision_formula": "P = P0 x (0,15 + 0,85 x I/I0)",
+    "revision_index": [
+      "identifiant INSEE ou nom d'indice"
+    ],
+    "deadline_rule": {
+      "amount": 2,
+      "unit": "months",
+      "direction": "before",
+      "reference": "anniversary"
+    },
+    "supplier_action_required": true,
+    "forfeiture_exists": true,
+    "threshold_exists": false,
+    "revision_source_page": 17
+  },
+  "events": [
+    {
+      "type": "PRICE_REVISION",
+      "page": 17
+    },
+    {
+      "type": "PRICE_REVISION_DEADLINE",
+      "page": 17
+    },
+    {
+      "type": "PRICE_REVISION_FORFEITURE",
+      "page": 17
+    }
+  ]
+}

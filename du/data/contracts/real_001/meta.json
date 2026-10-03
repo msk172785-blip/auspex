@@ -1,0 +1,15 @@
+{
+  "contract_id": "real_001",
+  "SIMULATED_EXAMPLE": false,
+  "REAL_DOCUMENT": true,
+  "document": "CCP_Lot1_Nettoyage_des_locaux_ 2026.pdf",
+  "buyer_as_published": "Mairie de Gif-sur-Yvette",
+  "consultation": "26-87209",
+  "source_urls": [
+    "https://www.radarmarchespublics.fr/marches/26-87209/pieces/CCP_Lot1_Nettoyage_des_locaux_%202026.pdf",
+    "https://www.achatpublic.com/sdm/ent/gen/ent_detail.do?PCSLID=CSL_2026_KyYLDgarkK"
+  ],
+  "input_format": "TEXT_EXTRACTION",
+  "provenance": "Le PDF original n'a pas pu être téléchargé (réseau de l'environnement : 403 sur radarmarchespublics.fr). Le texte a été fourni par l'utilisateur dans la conversation le 2026-10-03 (extraction texte publiée par radarmarchespublics.fr) et recopié dans CCP_Lot1_Nettoyage_des_locaux_2026.txt. Les numéros de page proviennent des pieds de page « Page N sur 40 ». La source indique « 70 pages » pour la pièce : les annexes ne figurent pas dans le texte fourni.",
+  "user_inputs": {}
+}

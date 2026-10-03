@@ -1,0 +1,9 @@
+{
+  "SIMULATED_EXAMPLE": true,
+  "reference_date": "2026-10-03",
+  "title": "CAS D — Retenue de garantie non restituée",
+  "user_inputs": {
+    "supplier": "Société Exemple Mobilier (fictive)",
+    "contract_start_date": "2024-09-01"
+  }
+}
