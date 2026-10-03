@@ -4,3 +4,5 @@ data/uploads/*
 !data/uploads/.gitkeep
 data/results/*
 !data/results/.gitkeep
+!data/results/real_001_before_fix.json
+!data/results/real_001_before_fix.md
