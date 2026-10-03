@@ -148,6 +148,10 @@ def parse_parametric_formula(formula: str) -> Optional[dict]:
     f = formula.replace("×", "x")
     matches = list(_FORMULA_PARAM_RE.finditer(f))
     if not matches:
+        # forme « rapport pur » : P = P0 × (I/I0)  (aucune partie fixe)
+        m = re.fullmatch(r"\s*[A-Za-z]\w*\s*=\s*[A-Za-z]\w*0\s*[x×*.]?\s*\(?\s*(?P<num>[A-Za-z]\w*)\s*/\s*(?P<den>[A-Za-z]\w*0)\s*\)?\s*", f)
+        if m:
+            return {"fixed_part": D(0), "variable_part": D(1), "index_term": f"{m.group('num')}/{m.group('den')}", "weights_sum": D(1)}
         # forme « coefficient » : Cn = a + b × (In/I0)
         m = _FORMULA_COEF_RE.search(f.strip())
         if m:

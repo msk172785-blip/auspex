@@ -64,3 +64,15 @@ L'exemple de la spécification affiche `"status": "VALIDATED"`. Le moteur ne pro
 2. Ajouter une extraction assistée par LLM, uniquement comme proposition : extrait obligatoire, contrôle littéral par `verify_quote`, statut toujours `REVIEW_REQUIRED`, comparaison avec les règles.
 3. Ajouter l'OCR (Tesseract) pour les PDF scannés, en marquant explicitement le niveau de confiance OCR.
 4. Ajouter la récupération des indices INSEE (séries BDM) pour calculer le coefficient sans saisie.
+
+## Moteur hybride v1 — état au 03/10/2026
+
+- Implémenté : voir `docs/ARCHITECTURE_HYBRIDE.md`, section 0.
+- Tests : `python -m pytest -q` (unitaires, adversariaux, segmentation, cohérence, régression real_001).
+- Premier passage des 10 tests adversariaux, AVANT toute correction : 2 réussis / 8 échoués
+  (`data/results/v1_adversarial_first_run.txt`). Les corrections apportées sont génériques (négation, élision « n' »,
+  destinataire d'une phrase passive, conséquence dont la condition est dans la phrase précédente, dates « avant le JJ mois »,
+  ancrage typé des nombres, fusion qui absorbait une clause rejetée).
+- Corpus simulé sim_001–sim_008 : 27/27 événements avec v1. AUCUNE valeur de généralisation : documents rédigés par
+  l'auteur des règles, et sim_008 a été consulté pendant la correction (il n'est plus un témoin indépendant).
+- real_001 : contrat de conception ; utilisé uniquement en régression (`tests/test_real_001_regression.py`).

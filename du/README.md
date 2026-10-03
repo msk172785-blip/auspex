@@ -121,3 +121,21 @@ du/
   tests/
   REPORT.md                 état honnête : ce qui marche, ce qui n'est pas fiable
 ```
+
+## Moteur hybride v1 (par défaut depuis le 03/10/2026)
+
+Pipeline : segmentation → candidats larges → interprétation (cadres sémantiques locaux ; Claude en option)
+→ vérification stricte contre la source → normalisation → calculs déterministes → cohérence → revue humaine
+obligatoire sur les catégories critiques. Détail : `docs/ARCHITECTURE_HYBRIDE.md`.
+
+| Action | Commande |
+|---|---|
+| Analyse v1 d'un PDF | `python analyze.py chemin/CCAP.pdf [--notification 2026-12-20]` |
+| Analyse v1 d'une extraction texte | `python analyze.py fichier.txt --text` |
+| Analyse avec l'interpréteur Claude (optionnel) | `pip install anthropic` puis `ANTHROPIC_API_KEY=... python analyze.py CCAP.pdf --llm` |
+| Ancien moteur regex (comparaison) | `python analyze.py --engine baseline chemin/CCAP.pdf` |
+| Évaluation (échoue si faux négatif critique) | `python run_evaluation.py` (`--engine baseline`, `--no-fail`) |
+| Régression real_001 (contrat de conception) | `python scripts/run_real_001_v1.py` |
+| Tests | `python -m pytest -q` |
+
+L'interface Streamlit utilise encore le moteur baseline : aucune modification d'interface n'a été faite tant que le moteur v1 n'est pas terminé.

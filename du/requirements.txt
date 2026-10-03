@@ -2,4 +2,5 @@
 pypdf>=5.0
 reportlab>=4.0      # génération des PDF de démonstration (exemples simulés)
 streamlit>=1.35
+# anthropic>=1.0   # optionnel : interpréteur LLM du moteur v1 (--llm)
 pytest>=8.0

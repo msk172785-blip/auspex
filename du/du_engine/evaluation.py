@@ -17,6 +17,11 @@ from typing import Any, Optional
 
 from .models import DEADLINE_EVENT_TYPES, ContractAnalysis
 
+# Catégories critiques (faux négatif => échec) exprimées dans le vocabulaire historique des vérités terrain :
+# échéance de révision, action du titulaire, forclusion, seuil/plafond, nouveau prix dû, avenant, prestation commandée.
+CRITICAL_LEGACY_TYPES = DEADLINE_EVENT_TYPES | {"PRICE_REVISION", "PRICE_REVISION_THRESHOLD", "AMENDMENT_PRICE_CHANGE",
+                                                "PURCHASE_ORDER_BILLING"}
+
 EVAL_FIELDS = ["revision_exists", "revision_formula", "revision_index", "deadline_rule",
                "supplier_action_required", "forfeiture_exists", "threshold_exists", "revision_source_page"]
 BOOL_FIELDS = ["revision_exists", "supplier_action_required", "forfeiture_exists", "threshold_exists"]
@@ -65,7 +70,7 @@ def compare_field(name: str, gt: Any, analysis: ContractAnalysis) -> dict:
     raise KeyError(name)
 
 
-def compare_events(expected: list[dict], analysis: ContractAnalysis) -> dict:
+def compare_events(expected: list[dict], analysis) -> dict:
     preds = [{"type": e.financial_event_type, "pages": sorted({x.page for x in e.evidence}), "title": e.title,
               "status": e.status} for e in analysis.events]
     used = [False] * len(preds)
@@ -82,7 +87,7 @@ def compare_events(expected: list[dict], analysis: ContractAnalysis) -> dict:
                     idx = i
                     break
         if idx is None:
-            fn.append({**exp, "critical": exp["type"] in DEADLINE_EVENT_TYPES})
+            fn.append({**exp, "critical": exp.get("critical", exp["type"] in CRITICAL_LEGACY_TYPES)})
         else:
             used[idx] = True
             tp.append({**exp, "predicted_pages": preds[idx]["pages"],
@@ -91,7 +96,7 @@ def compare_events(expected: list[dict], analysis: ContractAnalysis) -> dict:
     return {"tp": tp, "fp": fp, "fn": fn}
 
 
-def evaluate_contract(analysis: ContractAnalysis, gt: dict) -> dict:
+def evaluate_contract(analysis, gt: dict) -> dict:
     fields = [compare_field(n, gt["fields"].get(n), analysis) for n in EVAL_FIELDS if n in gt.get("fields", {})]
     events = compare_events(gt.get("events", []), analysis)
     return {"contract_id": gt["contract_id"], "SIMULATED_EXAMPLE": gt.get("SIMULATED_EXAMPLE", False),

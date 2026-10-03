@@ -1,7 +1,8 @@
 """Évalue DÛ sur tous les contrats disposant d'une vérité terrain validée.
 
 Usage :
-    python run_evaluation.py                 # contrats de data/contracts/ avec ground truth validé
+    python run_evaluation.py                 # moteur hybride v1 (défaut), contrats avec ground truth validé
+    python run_evaluation.py --engine baseline   # ancien moteur regex (comparaison)
     python run_evaluation.py --real-only     # exclut les contrats simulés
     python run_evaluation.py --json          # sortie JSON brute
 
@@ -18,7 +19,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from du_engine.corpus import analyze_case  # noqa: E402
+from du_engine.corpus import analyze_case, load_case  # noqa: E402
+from du_engine.pdf_reader import read_pdf  # noqa: E402
+from du_engine.v1.engine import analyze_v1, legacy_view  # noqa: E402
 from du_engine.evaluation import aggregate, error_list, evaluate_contract  # noqa: E402
 
 CONTRACTS = ROOT / "data" / "contracts"
@@ -34,6 +37,8 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--real-only", action="store_true", help="exclure les contrats SIMULATED_EXAMPLE")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--engine", choices=["v1", "baseline"], default="v1")
+    ap.add_argument("--no-fail", action="store_true", help="ne pas renvoyer de code d'erreur sur faux négatif critique")
     args = ap.parse_args(argv)
 
     gts = []
@@ -56,16 +61,29 @@ def main(argv=None) -> int:
 
     results = []
     RESULTS.mkdir(parents=True, exist_ok=True)
+    unevaluated = {}
     for gt, case in gts:
-        analysis = analyze_case(case)
-        (RESULTS / f"{gt['contract_id']}_analysis.json").write_text(
-            json.dumps(analysis.to_dict(), ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+        if args.engine == "baseline":
+            analysis = analyze_case(case)
+            raw = analysis.to_dict()
+        else:
+            c = load_case(case)
+            meta = c["meta"]
+            from datetime import date as _d
+            raw = analyze_v1([read_pdf(p) for p in c["pdfs"]], user_inputs=meta.get("user_inputs", {}), recon=c["recon"],
+                             reference_date=_d.fromisoformat(meta["reference_date"]) if meta.get("reference_date") else None,
+                             simulated=bool(meta.get("SIMULATED_EXAMPLE")), contract_key=c["key"])
+            analysis = legacy_view(raw)
+            unevaluated[gt["contract_id"]] = analysis.unevaluated
+        (RESULTS / f"{gt['contract_id']}_{args.engine}_analysis.json").write_text(
+            json.dumps(raw, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
         results.append(evaluate_contract(analysis, gt))
 
     agg = aggregate(results)
     errors = error_list(results)
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out = {"summary": agg, "errors": errors, "skipped": skipped, "details": results}
+    out = {"engine": args.engine, "summary": agg, "errors": errors, "skipped": skipped, "details": results,
+           "events_outside_ground_truth_schema": unevaluated}
     (RESULTS / f"evaluation_{stamp}.json").write_text(json.dumps(out, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
 
     if args.json:
@@ -73,7 +91,7 @@ def main(argv=None) -> int:
         return 0
 
     print("=" * 72)
-    print("DÛ — ÉVALUATION SUR VÉRITÉ TERRAIN")
+    print(f"DÛ — ÉVALUATION SUR VÉRITÉ TERRAIN — moteur {args.engine}")
     print("=" * 72)
     if agg["simulated_contracts"]:
         print(f"ATTENTION : {agg['simulated_contracts']}/{agg['contracts']} contrats sont des EXEMPLES SIMULÉS rédigés par "
@@ -105,7 +123,13 @@ def main(argv=None) -> int:
     if skipped:
         print("-" * 72)
         print("Ignorés : " + "; ".join(skipped))
+    n_out = sum(len(v) for v in unevaluated.values())
+    if n_out:
+        print(f"Événements v1 hors du schéma des vérités terrain (non comptés, ni TP ni FP) : {n_out}")
     print(f"\nDétail : data/results/evaluation_{stamp}.json")
+    if agg["critical_false_negatives"] and not args.no_fail:
+        print(f"ÉCHEC : {agg['critical_false_negatives']} faux négatif(s) sur des catégories critiques.")
+        return 1
     return 0
 
 

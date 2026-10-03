@@ -1,7 +1,28 @@
-# DÛ — architecture hybride proposée (v1, non implémentée)
+# DÛ — architecture hybride v1
 
-Statut : proposition de conception. Aucune ligne de ce document n'est encore codée.
-Les règles regex actuelles (`du_engine/extractor.py`) sont gelées et deviennent le BASELINE de comparaison.
+Statut (03/10/2026) : IMPLÉMENTÉE dans `du_engine/v1/` — voir la section 0 pour l'écart exact entre la conception et le code.
+Les règles regex historiques (`du_engine/extractor.py`) sont conservées comme BASELINE et signal auxiliaire.
+
+## 0. Ce qui est réellement implémenté
+
+| Étape | Module | État |
+|---|---|---|
+| S0 Ingestion | `pdf_reader.py`, `text_input.py` | PDF (pypdf) ou extraction texte « Page N sur M ». Pas d'OCR, pas de second extracteur de mise en page. |
+| S1 Structuration | `v1/document.py` | Titres « ARTICLE n », « 4.3 - Titre », « 4.2.6. – Titre », hiérarchie, bruit de page retiré, paragraphes fusionnés à travers les sauts de page, anomalies de numérotation signalées. |
+| S2 Candidats | `v1/candidates.py` | Profil de concepts par paragraphe (rappel) ; motifs composés forts ; zones fortes non couvertes => REVIEW_REQUIRED. |
+| S3 Interprétation | `v1/frames.py` (local, par défaut) ; `v1/llm.py` (Claude, optionnel) | Cadres sémantiques locaux déterministes. Interpréteur LLM codé et testé avec un client simulé ; JAMAIS exécuté contre l'API (pas de clé dans l'environnement). |
+| S4 Vérification | `v1/verify.py` | Citation retrouvée (exacte / page corrigée / approchée ≥ 0,95) ; page et article recalculés ; ancrage TYPÉ des nombres (« N % », somme en €, « N unité ») ; sinon REJECTED_UNSUPPORTED. |
+| S5 Normalisation | `v1/schema.py` | Schéma fermé : rôles des montants et pourcentages, CONSEQUENCE_IF_NO_ACTION (type + polarité + partie inactive), expressions de dates. |
+| S6 Calculs | `calculations.py`, `v1/dates.py` | Dates logiques `max(D, notification_date)` jamais rendues absolues sans la variable ; échéances au plus tôt ; formule à rapport pur ; plafonds. |
+| S7 Cohérence | `v1/coherence.py` | CAP≠THRESHOLD, plafonds annuel/cumulé distingués, BDC≠valeur du marché, fréquence opérationnelle≠révision, conséquence d'inaction≠révision automatique, date conditionnelle non absolue, durée calculée vs énoncée. |
+| S8 Statuts + revue | `v1/engine.py` | AUTO_EXTRACTED / REVIEW_REQUIRED / REJECTED_UNSUPPORTED ; `human_review_required = true` sur toute catégorie critique ; checklist critique FOUND / NOT_FOUND / REVIEW_REQUIRED. |
+
+« Sémantique » dans l'interpréteur local signifie : composition de concepts (objet prix ∧ changement ∧ mécanisme ;
+modalité déontique ∧ verbe d'action ∧ acteur ; durée ∧ relation ∧ événement d'ancrage ; condition d'inaction ∧ issue ∧ polarité),
+résolution d'acteur (sujet explicite, pronom avec chaîne d'antécédents, destinataire d'une phrase passive, inférence de section)
+et rôle des nombres par leur gouverneur local. Ce n'est PAS un modèle de langue : les concepts restent décrits par des radicaux
+(lexicon.py). Une formulation dont AUCUN concept n'est connu échappe à l'interpréteur local ; seul l'interpréteur LLM peut
+généraliser au-delà — d'où la vérification stricte commune aux deux.
 
 Point de départ : les erreurs mesurées sur le premier vrai contrat (`data/results/real_001_before_fix.md`, catégories E1 à E10).
 

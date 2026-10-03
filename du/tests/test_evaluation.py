@@ -34,7 +34,7 @@ def test_aggregate_weighted_recall_penalises_deadline_misses():
 
 def test_run_evaluation_cli(capsys):
     import run_evaluation
-    assert run_evaluation.main([]) == 0
+    assert run_evaluation.main(["--no-fail"]) == 0
     out = capsys.readouterr().out
     for label in ("Nombre de contrats", "True positives", "False negatives", "Recall", "Precision", "Liste exacte des erreurs"):
         assert label in out
@@ -44,3 +44,12 @@ def test_ground_truth_files_are_wellformed():
     for p in (ROOT / "data" / "ground_truth").glob("*.json"):
         gt = json.loads(p.read_text(encoding="utf-8"))
         assert "contract_id" in gt and "fields" in gt and "events" in gt
+
+
+def test_critical_false_negative_fails_evaluation(capsys):
+    """Un faux négatif critique doit produire un code de sortie non nul (sauf --no-fail)."""
+    import run_evaluation
+    code = run_evaluation.main([])
+    out = capsys.readouterr().out
+    has_crit = "ÉCHEC" in out
+    assert code == (1 if has_crit else 0)
