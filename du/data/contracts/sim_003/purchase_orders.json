@@ -1,0 +1,26 @@
+{
+  "SIMULATED_EXAMPLE": true,
+  "purchase_orders": [
+    {
+      "po_id": "BC-SIM-2026-010",
+      "date": "2026-03-02",
+      "label": "Nettoyage après manifestation",
+      "amount": 2100.0,
+      "status": "REALISEE"
+    },
+    {
+      "po_id": "BC-SIM-2026-014",
+      "date": "2026-05-12",
+      "label": "Prestation exceptionnelle de remise en état après travaux",
+      "amount": 4800.0,
+      "status": "REALISEE"
+    },
+    {
+      "po_id": "BC-SIM-2026-019",
+      "date": "2026-09-20",
+      "label": "Prestation programmée",
+      "amount": 1500.0,
+      "status": "EN_COURS"
+    }
+  ]
+}

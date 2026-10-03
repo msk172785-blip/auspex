@@ -1,0 +1,5 @@
+# DÛ — prototype local (Python 3.10+)
+pypdf>=5.0
+reportlab>=4.0      # génération des PDF de démonstration (exemples simulés)
+streamlit>=1.35
+pytest>=8.0

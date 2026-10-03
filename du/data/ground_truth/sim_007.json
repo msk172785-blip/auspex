@@ -1,0 +1,46 @@
+{
+  "contract_id": "sim_007",
+  "validated": true,
+  "validated_by": "auteur des documents simulés (vérité construite à partir du texte rédigé, avant exécution du moteur)",
+  "SIMULATED_EXAMPLE": true,
+  "fields": {
+    "revision_exists": true,
+    "revision_formula": "P = P0 x (0,15 + 0,50 x A/A0 + 0,35 x B/B0)",
+    "revision_index": [
+      "999999997",
+      "999999996"
+    ],
+    "deadline_rule": {
+      "amount": 30,
+      "unit": "days",
+      "direction": "after",
+      "reference": "anniversary"
+    },
+    "supplier_action_required": true,
+    "forfeiture_exists": true,
+    "threshold_exists": false,
+    "revision_source_page": 3
+  },
+  "events": [
+    {
+      "type": "PRICE_REVISION",
+      "page": 3
+    },
+    {
+      "type": "PRICE_REVISION_DEADLINE",
+      "page": 3
+    },
+    {
+      "type": "PRICE_REVISION_FORFEITURE",
+      "page": 3
+    },
+    {
+      "type": "RETENTION_RELEASE",
+      "page": 3
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 3
+    }
+  ]
+}

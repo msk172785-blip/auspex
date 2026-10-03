@@ -1,0 +1,42 @@
+{
+  "contract_id": "sim_008",
+  "validated": true,
+  "validated_by": "auteur des documents simulés (vérité construite à partir du texte rédigé, avant exécution du moteur)",
+  "SIMULATED_EXAMPLE": true,
+  "fields": {
+    "revision_exists": true,
+    "revision_formula": null,
+    "revision_index": [
+      "coût horaire du travail"
+    ],
+    "deadline_rule": {
+      "amount": 60,
+      "unit": "days",
+      "direction": "before",
+      "reference": "anniversary"
+    },
+    "supplier_action_required": true,
+    "forfeiture_exists": true,
+    "threshold_exists": false,
+    "revision_source_page": 2
+  },
+  "events": [
+    {
+      "type": "PRICE_REVISION",
+      "page": 2
+    },
+    {
+      "type": "PRICE_REVISION_DEADLINE",
+      "page": 2
+    },
+    {
+      "type": "PRICE_REVISION_FORFEITURE",
+      "page": 2
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 2
+    }
+  ],
+  "note": "Vocabulaire atypique (« ajustement », « échéance annuelle ») : document témoin des limites des règles. Ne pas ajuster les règles sur ce seul document."
+}

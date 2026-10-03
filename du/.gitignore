@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+data/uploads/*
+!data/uploads/.gitkeep
+data/results/*
+!data/results/.gitkeep

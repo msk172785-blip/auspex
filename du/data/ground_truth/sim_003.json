@@ -1,0 +1,30 @@
+{
+  "contract_id": "sim_003",
+  "validated": true,
+  "validated_by": "auteur des documents simulés (vérité construite à partir du texte rédigé, avant exécution du moteur)",
+  "SIMULATED_EXAMPLE": true,
+  "fields": {
+    "revision_exists": false,
+    "revision_formula": null,
+    "revision_index": null,
+    "deadline_rule": null,
+    "supplier_action_required": false,
+    "forfeiture_exists": false,
+    "threshold_exists": false,
+    "revision_source_page": null
+  },
+  "events": [
+    {
+      "type": "PURCHASE_ORDER_BILLING",
+      "page": 2
+    },
+    {
+      "type": "VARIABLE_SERVICE_BILLING",
+      "page": 2
+    },
+    {
+      "type": "OTHER_FINANCIAL_RIGHT",
+      "page": 2
+    }
+  ]
+}
